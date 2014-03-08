@@ -5,6 +5,7 @@
         <meta charset="utf-8" />
         <link rel="stylesheet" href="http://litacho.github.io/theme/css/main.css" type="text/css" />
         <link rel="stylesheet" href="http://litacho.github.io/theme/css/syntax.css" type="text/css" />
+         <link rel="stylesheet" href="http://litacho.github.io/theme/css/social.css" type="text/css" />
 
 
 
@@ -22,31 +23,96 @@
 <body id="index" class="home">
         <header id="banner" class="body">
                 <h1><a href="http://litacho.github.io/index.html">Lita Cho </a></h1>
+
+        
+
                 <nav><ul>
-                    <li><a href="http://litacho.github.io/index.html">Home</a></li>
-                    <li ><a href="http://litacho.github.io/pages/about.html">About</a></li>
-                    <li ><a href="http://litacho.github.io/pages/projects.html">Projects</a></li>
+                    <li ><a href="http://litacho.github.io/index.html">Home</a>|</li>
+
+                <!--Displays Pages on Menu -->
+                    <li ><a href="http://litacho.github.io/pages/about.html">About</a>|</li> 
+                    <li ><a href="http://litacho.github.io/pages/projects.html">Projects</a>|</li> 
+                
+                <!--Displays Categories on Menu -->
                         <li ><a href="http://litacho.github.io/category/blog.html">Blog</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
         
+        
 
-<section id="content" class="body">    
-</section>
+            <aside id="body" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://litacho.github.io/working-with-elm.html">Working with Elm</a></h1> 
+<footer class="post-info">
+        <abbr class="published" title="2014-03-05T02:07:00">
+                Wed 05 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://litacho.github.io/author/lita-cho.html">Lita Cho</a>
+        </address>
+<p>In <a href="http://litacho.github.io/category/blog.html">Blog</a>. </p>
+<p>tags: <a href="http://litacho.github.io/tag/elm.html">elm</a><a href="http://litacho.github.io/tag/website-hacker-school.html">website hacker school</a></p></footer><!-- /.post-info --><p>Last week, we had Evan Czaplicki as our resident! He is an awesome guy who 
+invented Elm, a functional language used for making interactive programs. It has
+been awhile since I've done any functional programming. Basically, I've only 
+written ghetto Scheme code back in college (if you went to Berkeley, the class 
+was CS61A). But I've completely forgotten it. </p>
+<p>Evan gave a great talk for our batch, live coding a Mario game during the 
+presentation! You guys have to check it out!</p>
+<p><a href="http://elm-lang.org/edit/examples/Intermediate/Mario.elm">Mario programmed in Elm</a></p>
+<p>The talk was enough to get me to try to learn it, even though I 
+had no intention on learning a functional programming language. I know this
+was a distraction from learning web programming, but it's not like I was binging 
+on a TV show... </p>
+<p>Elm is very similar to Haskell, ML, and OCaml. It is a statically-typed, 
+functional language. If you don't have Haskell installed, installing Elm 
+REALLY sucks right now. Evan is working on making an installer. For now, I 
+mostly did my coding on the interactive browser, which compiles the code on Evan's
+server.</p>
+<p><a href="http://elm-lang.org/try">Try Elm!</a></p>
+<p>Starting was SOOOoo hard. I just tried writing a linked-list...</p>
+<div class="highlight"><pre><span class="n">data</span> <span class="n">LinkedList</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Empty</span> <span class="o">|</span> <span class="n">Cons</span> <span class="n">a</span> <span class="p">(</span><span class="n">LinkedList</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">generateList</span> <span class="n">x</span> <span class="o">=</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span> <span class="n">then</span> <span class="n">Empty</span> 
+                 <span class="k">else</span> <span class="n">Cons</span> <span class="n">x</span> <span class="p">(</span><span class="n">generateList</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">main</span> <span class="o">=</span> <span class="n">asText</span> <span class="p">(</span><span class="n">generateList</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+
+<p>You have no idea how long this took me to write. Basically, I write an algebraic data type (ADT), which basically says I can be either "Empty" or a two element data with "a" and another LinkedList. Cons is a Lisp thing, that just means it 
+constructs two elements. <code>generateList</code> just recursively creates a 
+LinkedList from <code>x</code> to 0.</p>
+<p>I knew making any project was going to be death after trying to do this. I decided I try to write a bouncy ball.. How hard could that be. This is what I ended up creating.</p>
+<p><a href="http://share-elm.com/sprout/5317940ee4b0f7cc0dd4e16d">Red Bouncing Ball</a></p>
+<p>I have to admit, I had a lot of help from Evan. I had trouble understanding how 
+data was flowing. He made these diagrams:</p>
+<div class="highlight"><pre><span class="n">add</span><span class="o">:</span> <span class="n">Int</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="o">-&gt;</span> <span class="n">Int</span>
+<span class="n">add</span> <span class="n">a</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+
+
+<p>At first, these didn't make any sense. However, talking with Evan and reading the [Haskell Introduction][http://www.haskell.org/haskellwiki/Introduction] page definitely helped. First, parenthesis are not needed to pass in arguments. They represent a grouping. So here, <code>add</code> takes in two arguments, <code>a</code> and <code>b</code>. <code>=</code> here doesn't mean assignment. It represents a definition of a function.</p>
+<p>With functional programming, you have to think about how the data flows through the pipeline rather than saving state through variables. In the <code>add</code> method, you can very well give it just one argument. This will just return an incomplete function rather than an <code>Int</code>. </p><p>There are <a href="http://litacho.github.io/working-with-elm.html#disqus_thread">comments</a>.</p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
         <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
         </section><!-- /#extras -->
 
         <footer id="contentinfo" class="body">
 
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'litacho';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

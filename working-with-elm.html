@@ -5,6 +5,7 @@
         <meta charset="utf-8" />
         <link rel="stylesheet" href="http://litacho.github.io/theme/css/main.css" type="text/css" />
         <link rel="stylesheet" href="http://litacho.github.io/theme/css/syntax.css" type="text/css" />
+         <link rel="stylesheet" href="http://litacho.github.io/theme/css/social.css" type="text/css" />
 
 
 
@@ -22,10 +23,17 @@
 <body id="index" class="home">
         <header id="banner" class="body">
                 <h1><a href="http://litacho.github.io/index.html">Lita Cho </a></h1>
+
+        
+
                 <nav><ul>
-                    <li><a href="http://litacho.github.io/index.html">Home</a></li>
-                    <li ><a href="http://litacho.github.io/pages/about.html">About</a></li>
-                    <li ><a href="http://litacho.github.io/pages/projects.html">Projects</a></li>
+                    <li ><a href="http://litacho.github.io/index.html">Home</a>|</li>
+
+                <!--Displays Pages on Menu -->
+                    <li ><a href="http://litacho.github.io/pages/about.html">About</a>|</li> 
+                    <li ><a href="http://litacho.github.io/pages/projects.html">Projects</a>|</li> 
+                
+                <!--Displays Categories on Menu -->
                         <li class="active"><a href="http://litacho.github.io/category/blog.html">Blog</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -88,23 +96,36 @@ data was flowing. He made these diagrams:</p>
 <p>At first, these didn't make any sense. However, talking with Evan and reading the [Haskell Introduction][http://www.haskell.org/haskellwiki/Introduction] page definitely helped. First, parenthesis are not needed to pass in arguments. They represent a grouping. So here, <code>add</code> takes in two arguments, <code>a</code> and <code>b</code>. <code>=</code> here doesn't mean assignment. It represents a definition of a function.</p>
 <p>With functional programming, you have to think about how the data flows through the pipeline rather than saving state through variables. In the <code>add</code> method, you can very well give it just one argument. This will just return an incomplete function rather than an <code>Int</code>. </p>
     </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "working-with-elm.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://litacho.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
   </article>
 </section>
         <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
         </section><!-- /#extras -->
 
         <footer id="contentinfo" class="body">
 
         </footer><!-- /#contentinfo -->
 
+<script type="text/javascript">
+    var disqus_shortname = 'litacho';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 </body>
 </html>

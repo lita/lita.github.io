@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Lita Cho</title><link href="http://litacho.github.io/" rel="alternate"></link><link href="http://litacho.github.io/feeds/all.atom.xml" rel="self"></link><id>http://litacho.github.io/</id><updated>2014-03-05T02:07:00-05:00</updated><entry><title>Working with Elm</title><link href="http://litacho.github.io/working-with-elm.html" rel="alternate"></link><updated>2014-03-05T02:07:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-03-05:working-with-elm.html</id><summary type="html">&lt;p&gt;Last week, we had Evan Czaplicki as our resident! He is an awesome guy who 
+invented Elm, a functional language used for making interactive programs. It has
+been awhile since I've done any functional programming. Basically, I've only 
+written ghetto Scheme code back in college (if you went to Berkeley, the class 
+was CS61A). But I've completely forgotten it. &lt;/p&gt;
+&lt;p&gt;Evan gave a great talk for our batch, live coding a Mario game during the 
+presentation! You guys have to check it out!&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://elm-lang.org/edit/examples/Intermediate/Mario.elm"&gt;Mario programmed in Elm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The talk was enough to get me to try to learn it, even though I 
+had no intention on learning a functional programming language. I know this
+was a distraction from learning web programming, but it's not like I was binging 
+on a TV show... &lt;/p&gt;
+&lt;p&gt;Elm is very similar to Haskell, ML, and OCaml. It is a statically-typed, 
+functional language. If you don't have Haskell installed, installing Elm 
+REALLY sucks right now. Evan is working on making an installer. For now, I 
+mostly did my coding on the interactive browser, which compiles the code on Evan's
+server.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://elm-lang.org/try"&gt;Try Elm!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Starting was SOOOoo hard. I just tried writing a linked-list...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="n"&gt;LinkedList&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Empty&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;Cons&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LinkedList&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;generateList&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;then&lt;/span&gt; &lt;span class="n"&gt;Empty&lt;/span&gt; 
+                 &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="n"&gt;Cons&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;generateList&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;main&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asText&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;generateList&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You have no idea how long this took me to write. Basically, I write an algebraic data type (ADT), which basically says I can be either "Empty" or a two element data with "a" and another LinkedList. Cons is a Lisp thing, that just means it 
+constructs two elements. &lt;code&gt;generateList&lt;/code&gt; just recursively creates a 
+LinkedList from &lt;code&gt;x&lt;/code&gt; to 0.&lt;/p&gt;
+&lt;p&gt;I knew making any project was going to be death after trying to do this. I decided I try to write a bouncy ball.. How hard could that be. This is what I ended up creating.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://share-elm.com/sprout/5317940ee4b0f7cc0dd4e16d"&gt;Red Bouncing Ball&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I have to admit, I had a lot of help from Evan. I had trouble understanding how 
+data was flowing. He made these diagrams:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt;
+&lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;At first, these didn't make any sense. However, talking with Evan and reading the [Haskell Introduction][http://www.haskell.org/haskellwiki/Introduction] page definitely helped. First, parenthesis are not needed to pass in arguments. They represent a grouping. So here, &lt;code&gt;add&lt;/code&gt; takes in two arguments, &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt;. &lt;code&gt;=&lt;/code&gt; here doesn't mean assignment. It represents a definition of a function.&lt;/p&gt;
+&lt;p&gt;With functional programming, you have to think about how the data flows through the pipeline rather than saving state through variables. In the &lt;code&gt;add&lt;/code&gt; method, you can very well give it just one argument. This will just return an incomplete function rather than an &lt;code&gt;Int&lt;/code&gt;. &lt;/p&gt;</summary><category term="elm"></category><category term="website hacker school"></category></entry><entry><title>2 Weeks into Hacker School! Progress on my Bittorrent Client</title><link href="http://litacho.github.io/2-weeks-into-hacker-school-progress-on-my-bittorrent-client.html" rel="alternate"></link><updated>2014-02-24T02:56:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-02-24:2-weeks-into-hacker-school-progress-on-my-bittorrent-client.html</id><summary type="html">&lt;p&gt;Wow! I can't believe two weeks has gone by! I feel like I am learning a
+lot, but not learning enough. At the end of the day, I always want to
+code more. It is so hard to focus on your projects while at Hacker
+School though. There is SO much to do! So many interesting workshops and
+so many people to do &lt;a href="https://www.hackerschool.com/manual#sec-pairing"&gt;pair-programming&lt;/a&gt; with! In order to make time
+for this project, I ended up staying late or coding over the weekend. I
+actually like this schedule, but we'll see how long I can keep it up.&lt;/p&gt;
+&lt;h2 class="wsite-content-title" style="text-align: left;"&gt;Bittorrent Client&lt;/h2&gt;
+&lt;p&gt;GREAT NEWS! I am now able to download files from Bittorrent network
+using a tracker file. Unfortunately, all the data lives in RAM until I
+download all the pieces, so it is limited. I also can't upload files to
+other peers. I have been mostly testing my client on music files with no
+peers, only seeds. But hey! It's a start.   &lt;/p&gt;
+&lt;p&gt;I couldn't have done it without Kristen Widman's blog posts, who is also
+a former Hacker Schooler!  &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.kristenwidman.com/blog/how-to-write-a-bittorrent-client-part-1/"&gt;How to Write a Bittorrent Client: Part 1&lt;/a&gt;&lt;br /&gt;
+&lt;a href="http://www.kristenwidman.com/blog/how-to-write-a-bittorrent-client-part-2/"&gt;How to Write a Bittorrent Client: Part 2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Thank you SO much Kristen for writing this tutorial! Without it, it
+would have taken me forever to get to where I am now.  &lt;/p&gt;
+&lt;p&gt;What I Learned:  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Refactoring code is hard. &lt;br /&gt;
+The Bittorrent Client is great for having small goals. However, at some
+point, you reach a step and you realize you need to rewrite and organize
+your code in order to move on. Adding more abstractions, get rid of
+duplicate code, making it more object-orientated... it's a part of
+life!   &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Designing and structuring code can be a time suck. &lt;br /&gt;
+Many times, I would just sit at my desk, wondering how I should go about
+organizing my code when I really had no idea what the Bittorrent
+specification was talking about. Then I would read someone else's
+implementation and get confused even more. Should I make a Piece class
+because someone else did? Should I make a Message class for each Message
+code? This was getting in the way of me learning. In the end, I ended up
+hard coding the bytes and sending it to a Peer to see what happened.
+This helped me tremendously to figure out how the protocol works, and
+then designed around that. How are you suppose to design something if
+you don't understand the specifications?  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wireshark is awesome, especially for learning and debugging.&lt;br /&gt;
+I never really used Wireshark till this project, and IT IS F*CKING
+AWESOME. Many thanks to Alan, a Hacker School Facilitator, for showing
+me how it works!  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Don't look at other people's code too early on.&lt;br /&gt;
+I feel like I got really scared of this project by looking at BitTorando
+and other Hacker Schooler's Bittorrent implementations. But I am glad it
+didn't deter me. I ended up writing it my own way.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Future Steps:  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Make it so that my program can upload files as well as download.&lt;/li&gt;
+&lt;li&gt;Make it handle multiple peers, either with Twisted or writing my own
+    event loop. (If I go with writing my own event loop, I should
+    probably make it multi-threaded. But that is another beast)&lt;/li&gt;
+&lt;li&gt;Make it so that all the pieces don't live in RAM, but stored on disk
+    if the file is too big. (Can't download 8GB files at the moment...)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Even after my skepticism, I have to say that this project was really
+cool. You have these small little goals that build up to a big software
+project. Try connecting to the tracker server, and getting ip address
+back. Then try to connect to one peer and send a handshake and so
+forth.  &lt;/p&gt;
+&lt;p&gt;I was running around when I was able to download an album and play it on
+my computer. I can't believe I wrote software to do that!   &lt;/p&gt;
+&lt;p&gt;MANY THANKS TO ALAN AND TOM, my two WONDERFUL facilitators at Hacker
+School! This couldn't have happened without your enthusiasm for writing
+Bittorrent Clients!  &lt;/p&gt;
+&lt;p&gt;Even though this project was great, I want to try making a full stack
+web app. Lets see how that goes!&lt;/p&gt;</summary><category term="bittorrent"></category><category term="hacker school"></category></entry><entry><title>Meeting with Mel</title><link href="http://litacho.github.io/meeting-with-mel.html" rel="alternate"></link><updated>2014-02-20T03:20:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-02-20:meeting-with-mel.html</id><summary type="html">&lt;p&gt;I met with Mel Chua today, 1-on-1, in order to get a better idea of how
+I can make the most of my time at Hacker School. She mentioned intrinsic
+motivation (motivation from within) versus extrinsic motivation
+(motivation from the outside) in her what-kind-of-learner-are-you
+workshop. Basically, you learn better if your motivation about a topic
+comes intrinsically.   &lt;/p&gt;
+&lt;p&gt;However, I've been having a hard time figuring out what topics motivates
+me intrinsically. I feel like I've been choosing topics, workshops, and
+projects that would be good for my career as a software developer versus
+me being like, "oh WOW! This topic is SOOOoo fascinating! Let's spend
+HOURS coding it up."   &lt;/p&gt;
+&lt;p&gt;Talking with Mel, she and I have similar back stories. We both grew up
+with strict Asian parents and were wired to do well in a structured
+educational environment. We only had three real career options due to
+family pressures (doctor, lawyer, engineer -- although Mel also had the
+option of business school). We've both been good at listening to other
+peoples' voices and mold ourselves to follow the rules of society,
+whether it be academia or a big corporation.  &lt;/p&gt;
+&lt;p&gt;Now coming to Hacker School, I was completely lost on what to do. There
+was no one to tell me the guidelines. I didn't have a project that I was
+passionate about walking in. Talking with Mel, I realized I've forgotten
+how to listen to my inner voice. I am very good at listening to everyone
+else, pieces their words together, and regurgitating it back. That is
+why when I come to a new problem or topic I have no clue about, I get so
+nervous, since I have no one else's voice to piece together. If someone
+challenges my answer, I am quick to change it rather than listening to
+my gut. Even my opinions about movies or restaurants are influenced by
+friends or Yelp.   &lt;/p&gt;
+&lt;p&gt;Mel recommended that I need to practice silence. Meditation is another
+word for it, but basically I need to spend some time not cognitively
+thinking and emptying my mind in order to hear my inner voice again. The
+book “Women’s Ways of Knowing” has a section that describes the journey
+through silence that one has to pass through to move from “parroting
+others” to finding your authentic voice:  &lt;/p&gt;
+&lt;p&gt;“To most women, the first steps on this journey do not feel like
+progress. The voice diminishes in volume; it lacks authority. These
+women lack even the derived authority of those who, having faith in
+received knowledge, can assume as they parrot their elders that they
+speak the truth. Lacking, also, the inner authority of the subjectivist,
+they cannot cheerfully blurt out the first idea that springs to mind.
+The inner voice turns critical; it tells them their ideas may be stupid.
+Women at this position think before they speak; and, because their ideas
+must measure up to certain objective standards, they speak in measured
+tones. Often, they do not speak at all. But this is not a passive
+silence; on the other side of this silence, reason is stirring.” (page
+93)  &lt;/p&gt;
+&lt;p&gt;It sounded weird and VERY uncomfortable. Based on her workshop, I found
+that I was an active learner, where I need to continuously talk to
+process information. In conversations, I need to fill the silence with
+noise, so I usually end up rambling in order to fill the silence.   &lt;/p&gt;
+&lt;p&gt;She realized this was going to be hard, but asked me to try it for a
+week. Here is the schedule she suggested for me:  &lt;/p&gt;
+&lt;p&gt;Morning:  Take up to 15 minutes to write 3 pages of whatever it is on
+your mind. Basically do a brain dump to get all the clutter out. This
+way, your brain is prepared for the silence. This is a practice called
+“morning pages” and comes from the book “The Artist’s Way.”  &lt;/p&gt;
+&lt;p&gt;Mid-Afternoon: 20 minutes of silence. If that is too hard, start with 5
+minutes and work your way up. Also, this doesn't mean 20 minutes of no
+talking and thinking about programming problems or what to do tomorrow.
+Just empty your mind and make peace with the silence.  &lt;/p&gt;
+&lt;p&gt;Evening: Examen. In order to become more sensitive to my own voice, I
+have to practice listening to my “interior movements,” which are sort of
+like emotions/feelings. These steps are adapted from spiritual exercises
+composed by Ignatius of Loyola:  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Feelings review! Take 10 minutes to reflect on any feelings you had
+today and review them. Example: I was scared when this person asked to
+pair programming with me!   &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Analysis! Try to think why these feelings came up or what situation
+caused this feeling. See if you had this feeling before in the past and
+if there are any patterns. Example: I am not comfortable pair
+programming in a language I don't know. This happened back in college
+when I was paired up with a partner who wanted to use an unfamiliar
+language!  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Next Steps: Identify future steps for tomorrow about how you can
+discover your inner voice! If you have a feeling that you are not sure
+how identify, try to recreate it in order to learn how to make that
+feeling happen. If you want to overcome a fear, try to get
+uncomfortable. Remember feelings that truly get you excited or happy,
+and recreate those moments. If you have feelings you hate or piss you
+off, log those too and see if you can find any patterns!  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I am keeping an open mind and giving this a try! I hope I can find my
+inner voice by practicing this everyday and find what I am truly
+passionate about!  &lt;/p&gt;</summary><category term="Uncategorized"></category></entry><entry><title>New York and First Day at Hacker School</title><link href="http://litacho.github.io/new-york-and-first-day-at-hacker-school.html" rel="alternate"></link><updated>2014-02-11T19:11:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-02-11:new-york-and-first-day-at-hacker-school.html</id><summary type="html">&lt;p&gt;If you haven't heard, I decided to quit my cushy job at Dreamworks
+Animation and move to New York. It seems kind of crazy, but I spent all
+of Christmas break and January deciding if I really want to do it. I've
+been living in the Bay Area a long time, and I felt like I needed a
+change.  &lt;/p&gt;
+&lt;p&gt;I decided to attend Hacker School. I get to live in New York for three
+months and work on whatever programming projects I want with like-minded
+people.  &lt;/p&gt;
+&lt;p&gt;Since I didn't post when I arrived, this post will be in two parts. &lt;/p&gt;
+&lt;h2 class="wsite-content-title" style="text-align: left;"&gt;Part 1: Hanging out with Ben&lt;/h2&gt;
+&lt;p&gt;Ben was my TA at Berkeley way back in 2008 and my project partner in the
+same semester. After he graduated, we totally lost touch. But I remember
+he moved to New York for work. Five years later, I decide I want to go
+to Hacker School, and email him out of the blue to see if I can crash at
+his place.  &lt;/p&gt;
+&lt;p&gt;It was shocking how welcoming he was after all these years. It was like
+he never left, and we just left off where we started. His roommate is
+super into indie movies, particularly difficult movies to watch like
+movies from David Lynch and Haneke. It was quite stimulating to analyze
+movies in an intellectual level.&lt;/p&gt;
+&lt;h2 class="wsite-content-title" style="text-align: left;"&gt;Part 2: Hacker School&lt;/h2&gt;
+&lt;p&gt;During my first day at Hacker School, I definitely felt lost. They
+basically give you some ground rules (which basically sums up to "don't
+be a jerk") and let you do whatever you want. No instructions. No
+direction.   &lt;/p&gt;
+&lt;p&gt;I really am not that great without direction, so I felt really lost my
+first day. But I decided to choose something and get started. I know I
+want to learn web programming. So I decided to try out Flask, since I am
+comfortable with Python.  &lt;/p&gt;
+&lt;p&gt;I was able to make a microblog pretty quickly using this tutorial: &lt;br /&gt;
+&lt;a href="http://flask.pocoo.org/docs/tutorial/"&gt;http://flask.pocoo.org/docs/tutorial/&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;I want to extend this by being able to add images and dates. I also
+found this tutorial that seems really useful: &lt;br /&gt;
+&lt;a href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world"&gt;The Flask Mega Tutorial&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Next half of the day, I moved onto learning WebGL. I found this website
+which translates &lt;a href="http://nehe.gamedev.net/"&gt;NeHe Tutorials&lt;/a&gt; (ahhh the memories) to
+WebGL: &lt;a href="http://learningwebgl.com/blog/?page\_id=1217"&gt;Learning WebGL&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;I did the first lesson and started to remember how much OpenGL sucks. By
+sucks, I mean how tedious it is. So I copped out and decided to use
+Three.js, which is a lot simpler! I was able to get something running
+with 10 lines of code vs 200.   &lt;/p&gt;
+&lt;p&gt;Going to continue learning Python and hopefully do some pair
+programming!!! I need to work up the courage to do pair programming.&lt;/p&gt;</summary><category term="new york"></category><category term="webGL"></category><category term="hacker school"></category><category term="flask"></category></entry><entry><title>Hong Kong Style Egg Pudding</title><link href="http://litacho.github.io/hong-kong-style-egg-pudding.html" rel="alternate"></link><updated>2013-12-31T06:57:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2013-12-31:hong-kong-style-egg-pudding.html</id><summary type="html">&lt;p&gt;My boyfriend and I had egg pudding for the very first time while
+traveling in Hong Kong last year. We ate it almost every day at the
+Australian Milk Company while in Hong Kong.  &lt;/p&gt;
+&lt;p&gt;When we got back, we soon discovered that San Mateo had a restaurant
+that had HK-style egg pudding!  It wasn't consistent. Sometimes, it
+would be overcooked. However, the establishment did fulfill our cravings
+for the delicious dessert.  &lt;/p&gt;
+&lt;p&gt;We ate at this place a lot. Like... a lot! However, each pudding was
+$5! We ended up spending around $15-20 between the two of us, which
+was painful on the wallet.  &lt;/p&gt;
+&lt;p&gt;I decided this was getting ridiculous and to try to make this dish
+myself. However, I was being pretty cheap and picky about buying
+ramekins needed to make this dessert. It took me a year before my
+boyfriend found the cheapest ramekins at Daiso for $1.50!   &lt;/p&gt;
+&lt;p&gt;I ended up using this recipe as a base: &lt;a href="http://www.tastehongkong.com/recipes/chinese-egg-pudding-my-organic-dessert/"&gt;Hong Kong Pudding Recipe&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;It turned out to be a success!!! I am super excited. Now, I will NEVER
+pay $5+tax+tip for egg pudding EVER AGAIN!&lt;/p&gt;
+&lt;h2 style="text-align: left;"&gt;Lita's Recipe for Hong Kong Style Egg Pudding&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Ingredients&lt;/strong&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Two Eggs&lt;/li&gt;
+&lt;li&gt;1 cup of Milk &lt;/li&gt;
+&lt;li&gt;3 tablespoons of sugar (I used brown sugar)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tools&lt;/strong&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sieve  &lt;/li&gt;
+&lt;li&gt;2 individualize-size ramekins &lt;/li&gt;
+&lt;li&gt;Steamer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Combine the milk and sugar into a pot and heat the mixture till the
+sugar is fully dissolved. I used medium heat. Be careful not to over
+heat or the milk will curdle.     &lt;/p&gt;
+&lt;p&gt;In another bowl, beat the two eggs. Temper the egg with the milk mixture
+you just made. (Basically add small doses of the milk mixture to the
+eggs while beating so you don't end up cooking the eggs.) You can also
+let the milk mixture cool and then add it to the eggs, but I was
+impatient.   &lt;/p&gt;
+&lt;p&gt;Strain the mixture through the sieve to get rid of the foams.   &lt;/p&gt;
+&lt;p&gt;Place the mixture evenly in the ramekins.  &lt;/p&gt;
+&lt;p&gt;Place the ramekins in the steamer.  &lt;/p&gt;
+&lt;p&gt;Steam the mixture for 15-20 minutes at low heat. You kind of need to
+experiment here, since the time is dependent on your stove. I basically
+jiggled the ramekins till the mixture had a jelly-like consistency.   &lt;/p&gt;
+&lt;p&gt;Here are some pictures of the results! Next, I am going to try making a
+Paleo-ish version with almond milk and honey.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Pudding" src="/images/2728904.jpg" /&gt; &lt;img alt="Pudding" src="/images/5567780.jpg" /&gt;
+&lt;img alt="Pudding" src="/images/5645957.jpg" /&gt;&lt;/p&gt;</summary><category term="cooking"></category><category term="desserts"></category></entry></feed>
