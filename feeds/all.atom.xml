@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Lita Cho</title><link href="http://litacho.github.io/" rel="alternate"></link><link href="http://litacho.github.io/feeds/all.atom.xml" rel="self"></link><id>http://litacho.github.io/</id><updated>2014-03-05T02:07:00-05:00</updated><entry><title>Working with Elm</title><link href="http://litacho.github.io/working-with-elm.html" rel="alternate"></link><updated>2014-03-05T02:07:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-03-05:working-with-elm.html</id><summary type="html">&lt;p&gt;Last week, we had Evan Czaplicki as our resident! He is an awesome guy who 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Lita Cho</title><link href="http://litacho.github.io/" rel="alternate"></link><link href="http://litacho.github.io/feeds/all.atom.xml" rel="self"></link><id>http://litacho.github.io/</id><updated>2014-03-05T02:07:00-05:00</updated><entry><title>Working with Elm</title><link href="http://litacho.github.io/working-with-elm.html" rel="alternate"></link><updated>2014-03-05T02:07:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-03-05:working-with-elm.html</id><summary type="html">&lt;p&gt;Last week, we had Evan Czaplicki as our resident! He is an awesome guy who
 invented Elm, a functional language used for making interactive programs. It has
-been awhile since I've done any functional programming. Basically, I've only 
-written ghetto Scheme code back in college (if you went to Berkeley, the class 
-was CS61A). But I've completely forgotten it. &lt;/p&gt;
-&lt;p&gt;Evan gave a great talk for our batch, live coding a Mario game during the 
+been awhile since I've done any functional programming. Basically, I've only
+written ghetto Scheme code back in college (if you went to Berkeley, the class
+was CS61A). But I've completely forgotten it.&lt;/p&gt;
+&lt;p&gt;Evan gave a great talk for our batch, live coding a Mario game during the
 presentation! You guys have to check it out!&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://elm-lang.org/edit/examples/Intermediate/Mario.elm"&gt;Mario programmed in Elm&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The talk was enough to get me to try to learn it, even though I 
-had no intention on learning a functional programming language. I know this
-was a distraction from learning web programming, but it's not like I was binging 
-on a TV show... &lt;/p&gt;
-&lt;p&gt;Elm is very similar to Haskell, ML, and OCaml. It is a statically-typed, 
-functional language. If you don't have Haskell installed, installing Elm 
-REALLY sucks right now. Evan is working on making an installer. For now, I 
-mostly did my coding on the interactive browser, which compiles the code on Evan's
-server.&lt;/p&gt;
+&lt;p&gt;The talk was enough to get me to try to learn it, even though I  had no
+intention on learning a functional programming language. I know this was a
+distraction from learning web programming, but it's not like I was binging  on a
+TV show...&lt;/p&gt;
+&lt;p&gt;Elm is very similar to Haskell, ML, and OCaml. It is a statically-typed,
+functional language. If you don't have Haskell installed, installing Elm  REALLY
+sucks right now. Evan is working on making an installer. For now, I  mostly did
+my coding on the interactive browser, which compiles the code on Evan's server.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://elm-lang.org/try"&gt;Try Elm!&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Starting was SOOOoo hard. I just tried writing a linked-list...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="n"&gt;LinkedList&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Empty&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;Cons&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LinkedList&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -25,10 +24,14 @@ server.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;You have no idea how long this took me to write. Basically, I write an algebraic data type (ADT), which basically says I can be either "Empty" or a two element data with "a" and another LinkedList. Cons is a Lisp thing, that just means it 
-constructs two elements. &lt;code&gt;generateList&lt;/code&gt; just recursively creates a 
-LinkedList from &lt;code&gt;x&lt;/code&gt; to 0.&lt;/p&gt;
-&lt;p&gt;I knew making any project was going to be death after trying to do this. I decided I try to write a bouncy ball.. How hard could that be. This is what I ended up creating.&lt;/p&gt;
+&lt;p&gt;You have no idea how long this took me to write. Basically, I write an algebraic
+data type (ADT), which basically says I can be either "Empty" or a two element
+data with "a" and another LinkedList. Cons is a Lisp thing, that just means it
+constructs two elements. &lt;code&gt;generateList&lt;/code&gt; just recursively creates a  LinkedList
+from &lt;code&gt;x&lt;/code&gt; to 0.&lt;/p&gt;
+&lt;p&gt;I knew making any project was going to be death after trying to do this. I
+decided I try to write a bouncy ball.. How hard could that be. This is what I
+ended up creating.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://share-elm.com/sprout/5317940ee4b0f7cc0dd4e16d"&gt;Red Bouncing Ball&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I have to admit, I had a lot of help from Evan. I had trouble understanding how 
 data was flowing. He made these diagrams:&lt;/p&gt;
@@ -37,8 +40,52 @@ data was flowing. He made these diagrams:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;At first, these didn't make any sense. However, talking with Evan and reading the [Haskell Introduction][http://www.haskell.org/haskellwiki/Introduction] page definitely helped. First, parenthesis are not needed to pass in arguments. They represent a grouping. So here, &lt;code&gt;add&lt;/code&gt; takes in two arguments, &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt;. &lt;code&gt;=&lt;/code&gt; here doesn't mean assignment. It represents a definition of a function.&lt;/p&gt;
-&lt;p&gt;With functional programming, you have to think about how the data flows through the pipeline rather than saving state through variables. In the &lt;code&gt;add&lt;/code&gt; method, you can very well give it just one argument. This will just return an incomplete function rather than an &lt;code&gt;Int&lt;/code&gt;. &lt;/p&gt;</summary><category term="elm"></category><category term="website hacker school"></category></entry><entry><title>2 Weeks into Hacker School! Progress on my Bittorrent Client</title><link href="http://litacho.github.io/2-weeks-into-hacker-school-progress-on-my-bittorrent-client.html" rel="alternate"></link><updated>2014-02-24T02:56:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-02-24:2-weeks-into-hacker-school-progress-on-my-bittorrent-client.html</id><summary type="html">&lt;p&gt;Wow! I can't believe two weeks has gone by! I feel like I am learning a
+&lt;p&gt;At first, these didn't make any sense. However, talking with Evan and reading
+the &lt;a href="http://www.haskell.org/haskellwiki/Introduction"&gt;Haskell Introduction&lt;/a&gt; page definitely helped. First, parenthesis are
+not needed to pass in arguments. They represent a grouping. So here, &lt;code&gt;add&lt;/code&gt; takes
+in two arguments, &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt;. &lt;code&gt;=&lt;/code&gt; here doesn't mean assignment. It represents a
+definition of a function.&lt;/p&gt;
+&lt;p&gt;With functional programming, it is a lot like a math equation. You have to think
+about how the data flows through the method rather than saving state through
+variables. Methods don't change or update the data. Data goes in through the
+pipe, some transformations happen, and new data comes out of the pipe.  In the
+&lt;code&gt;add&lt;/code&gt; method, you can very well give it just one argument. This will just return
+an incomplete function rather than an &lt;code&gt;Int&lt;/code&gt;, which takes in one &lt;code&gt;Int&lt;/code&gt; rather
+than two.&lt;/p&gt;
+&lt;p&gt;So my next idea was to make a lot of these balls and make them collide with each
+other. However, if you can't save state, then how are you suppose to update
+balls' positions and velocities as they interact with each other?&lt;/p&gt;
+&lt;p&gt;Basically, you make copies of everything... Seriously.&lt;/p&gt;
+&lt;p&gt;You make a copy of the old state. Then you take one ball and compare that ball
+to each ball in the old state (ignoring the ball itself in the old state). Then
+the method outputs a new ball with the updated positions and velocities. You
+then &lt;code&gt;map&lt;/code&gt; that to all the balls to get the new state.&lt;/p&gt;
+&lt;p&gt;Here is the million-dollar code that does this, which I can't believe I wrote...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;distance &lt;span class="p"&gt;(&lt;/span&gt;b1&lt;span class="p"&gt;,&lt;/span&gt;b2&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;b2.x&lt;span class="o"&gt;-&lt;/span&gt;b1.x&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;b2.y&lt;span class="o"&gt;-&lt;/span&gt;b1.y&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;
+
+collision  oldBall newBall &lt;span class="o"&gt;=&lt;/span&gt; 
+    &lt;span class="kr"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;not &lt;span class="p"&gt;(&lt;/span&gt;newBall &lt;span class="o"&gt;==&lt;/span&gt; oldBall&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;distance &lt;span class="p"&gt;(&lt;/span&gt;oldBall&lt;span class="p"&gt;,&lt;/span&gt;newBall&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;radius&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    then &lt;span class="p"&gt;{&lt;/span&gt;newBall &lt;span class="o"&gt;|&lt;/span&gt; vx &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;newBall.vx&lt;span class="p"&gt;,&lt;/span&gt;
+                    vy &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;newBall.vy&lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="kr"&gt;else&lt;/span&gt; newBall
+
+update ball &lt;span class="o"&gt;=&lt;/span&gt; foldl collision ball balls
+
+map update balls
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;collision&lt;/code&gt; method checks to see if the oldBall collides with the newBall
+using the distance formula. If so, then it reverses the velocities. If the
+oldBall and newBall are equal, then it doesn't do anything, since the balls are
+not allowed to collide with itself.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;update&lt;/code&gt; method is iterating through the list of new balls, using foldl, to
+check all the balls against one old ball.&lt;/p&gt;
+&lt;p&gt;Lastly, I map the update function to all the old balls.&lt;/p&gt;
+&lt;p&gt;Here is the result of my week-long effort. It came to about 73 lines of code! I
+think that is impressive for a newbie learning functional programming.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://share-elm.com/sprout/5320e1f1e4b0f7cc0dd4e697"&gt;Colliding Colorful Balls!&lt;/a&gt; - Click on the white canvas to make balls 
+appear!&lt;/p&gt;</summary><category term="elm"></category><category term="website hacker school"></category></entry><entry><title>2 Weeks into Hacker School! Progress on my Bittorrent Client</title><link href="http://litacho.github.io/2-weeks-into-hacker-school-progress-on-my-bittorrent-client.html" rel="alternate"></link><updated>2014-02-24T02:56:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-02-24:2-weeks-into-hacker-school-progress-on-my-bittorrent-client.html</id><summary type="html">&lt;p&gt;Wow! I can't believe two weeks has gone by! I feel like I am learning a
 lot, but not learning enough. At the end of the day, I always want to
 code more. It is so hard to focus on your projects while at Hacker
 School though. There is SO much to do! So many interesting workshops and
