@@ -6,6 +6,7 @@
     padding: 1.5em 0;
     padding-bottom: 3em
 }
+
 li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 #content > .hentry {padding: 1em 0;}
 .hentry img{display : none ;}
@@ -92,3 +93,7 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
     font-size: 0.8em;
 }
 
+/*subnote*/
+.subnote {
+    font-size: small;
+}
