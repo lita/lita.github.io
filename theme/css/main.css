@@ -251,6 +251,23 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	background-image: url('/images/icons/Facebook.png');
 }
 
+#banner .github:hover, #banner .github:active {
+	background-image: url('/images/icons/Github_a.png');
+}
+
+#banner .github {
+	background-image: url('/images/icons/Github.png');
+}
+
+
+#banner .linkedin:hover, #banner .linkedin:active {
+	background-image: url('/images/icons/Linkedin_a.png');
+}
+
+#banner .linkedin {
+	background-image: url('/images/icons/Linkedin.png');
+}
+
 #banner .rss:hover, #banner .rss:active {
 	background-image: url('/images/icons/RSS_a.png');
 }
