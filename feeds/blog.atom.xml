@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Lita Cho</title><link href="http://litacho.github.io/" rel="alternate"></link><link href="http://litacho.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://litacho.github.io/</id><updated>2014-03-16T00:00:00-04:00</updated><entry><title>Setting Up a Pelican Blog</title><link href="http://litacho.github.io/blog-setup.html" rel="alternate"></link><updated>2014-03-16T00:00:00-04:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-03-16:blog-setup.html</id><summary type="html">&lt;p&gt;Setting up a Pelican blog was a pain. But I actually learned a lot about CSS and HTML. Right now, I am going through The Modern Web, which is giving me a lot of great tips about how to organize my website. I now know that the structure of my website is a terrible mess and I need to refactor it ASAP.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Lita Cho</title><link href="http://litacho.github.io/" rel="alternate"></link><link href="http://litacho.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://litacho.github.io/</id><updated>2014-03-22T00:00:00-04:00</updated><entry><title>Fun with Python and pip!</title><link href="http://litacho.github.io/pip-freeze.html" rel="alternate"></link><updated>2014-03-22T00:00:00-04:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-03-22:pip-freeze.html</id><summary type="html">&lt;p&gt;I have been programming in Python for quite awhile now. However, I am still
+learning new things all the time about this language! I was able to download the
+source code for CPython and learn a lot about the internals! I even committed
+TWO patches to the CPython!&lt;/p&gt;
+&lt;p&gt;David, a fellow Hacker Schooler, showed me a cool way to list out all my
+dependences in my Python project! This is very useful for people who what to run
+my Python project.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pip freeze &amp;gt; requirements.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The command, pip freeze, prints out all the required modules that need to be
+downloaded to run my project. I write that out to a text file
+('requirements.txt') and save that to my project.&lt;/p&gt;
+&lt;p&gt;Then if someone wants to run my program, rather than me listing out my modules
+in a README or them looking at my code for the modules, all they need to do is
+run&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pip install -r requirements.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;and pip installs everything for you!!! How cool is that? Now all my friends who
+are reviewing my code won't complain about how hard my projects are to setup!&lt;/p&gt;
+&lt;p&gt;I had no idea pip was so powerful! &lt;code&gt;pip list -e&lt;/code&gt; lists all the out-dated
+libraries you have in your project, &lt;code&gt;pip search &amp;lt;query&amp;gt;&lt;/code&gt; searches the PyPi
+libraries for modules! I need to learn more about the program!&lt;/p&gt;
+&lt;p&gt;I am working on this HUGE blog post about Databases. But it needs to be proof-read and refined. Hopefully I get that out soon!&lt;/p&gt;</summary><category term="pip"></category><category term="python"></category><category term="hacker school"></category></entry><entry><title>Setting Up a Pelican Blog</title><link href="http://litacho.github.io/blog-setup.html" rel="alternate"></link><updated>2014-03-16T00:00:00-04:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-03-16:blog-setup.html</id><summary type="html">&lt;p&gt;Setting up a Pelican blog was a pain. But I actually learned a lot about CSS and HTML. Right now, I am going through The Modern Web, which is giving me a lot of great tips about how to organize my website. I now know that the structure of my website is a terrible mess and I need to refactor it ASAP.&lt;/p&gt;
 &lt;p&gt;I was going to write a tutorial about how to setup a Pelican blog, but this guy did a great job of it already.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://blog.xlarrakoetxea.org/posts/2012/10/creating-a-blog-with-pelican/"&gt;Slok's Blog: Creating a blog with Pelican&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;He uses Fabric, a Python library for automation, to push his blog posts to the website. He also uses git's branching in order to handle his dev-website and his deployment website. I made my own ghetto script using 'os' commands, but now going to use fabric to clean up my blog workspace. &lt;/p&gt;</summary><category term="blog"></category><category term="hacker school"></category></entry><entry><title>Working with Elm</title><link href="http://litacho.github.io/working-with-elm.html" rel="alternate"></link><updated>2014-03-05T02:07:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-03-05:working-with-elm.html</id><summary type="html">&lt;p&gt;Last week, we had Evan Czaplicki as our resident! He is an awesome guy who
