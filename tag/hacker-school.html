@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="http://litacho.github.io/theme/css/main.css" type="text/css" />
         <link rel="stylesheet" href="http://litacho.github.io/theme/css/syntax.css" type="text/css" />
          <link rel="stylesheet" href="http://litacho.github.io/theme/css/social.css" type="text/css" />
+          <link rel="stylesheet" href="http://litacho.github.io/theme/css/monokai.css" type="text/css" />
 
 
 
@@ -48,7 +49,129 @@
 
             <aside id="body" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://litacho.github.io/pip-freeze.html">Fun with Python and pip!</a></h1> 
+                    <h1 class="entry-title"><a href="http://litacho.github.io/databases.html">Databases</a></h1> 
+<footer class="post-info">
+        <abbr class="published" title="2014-03-23T00:00:00">
+                Sun 23 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://litacho.github.io/author/lita-cho.html">Lita Cho</a>
+        </address>
+<p>In <a href="http://litacho.github.io/category/blog.html">Blog</a>. </p>
+<p>tags: <a href="http://litacho.github.io/tag/databases.html">databases</a><a href="http://litacho.github.io/tag/web.html">web</a><a href="http://litacho.github.io/tag/hacker-school.html">hacker school</a></p></footer><!-- /.post-info --><p>I've been learning a lot about databases lately, and what sort of databases are out there currently. A fellow Hacker Schooler pointed me <a href="http://opensourcebridge.org/sessions/557">A Dozen Databases in 45 Minutes</a> by Eric Redmond, which was a pretty good overview of whats out there.</p>
+<p>After listening to this presentation and talking with another Hacker Schooler about databases, I thought I'd share what I learned. I am mostly going to go deeper with Open Source databases, so anyone can try using them at home.</p>
+<h2>Type: Relational Databases</h2>
+<h4>Examples: MySQL, PostgreSQL</h4>
+<p>This is the most common database out there. It has been around for a long time and it is very mature. You have a collection of 2D tables (rows and columns), very similar to Excel spreadsheets. However, you can add relationships between tables. Lets say you have the following two tables.</p>
+<table style="width:400px">
+<tr>
+  <th>name</th>
+  <th>postal_code</th>     
+  <th>country_code</th>
+</tr>
+<tr style="border-top: 1px solid black">
+  <td>San Francisco</td>
+  <td>94109</td>        
+  <td>us</td>
+</tr>
+<tr>
+  <td>Portland</td>
+  <td>97205</td>      
+  <td>us</td>
+</tr>
+</table>
+
+<table style="width:300px">
+<tr>
+  <th>country_code</th>
+  <th>country_name</th>     
+</tr>
+<tr style="border-top: 1px solid black">
+  <td>us</td>
+  <td>United States</td>        
+</tr>
+<tr>
+  <td>mx</td>
+  <td>Mexcio</td>
+</tr>
+<tr>
+  <td>au</td>
+  <td>Australia</td>
+</tr>
+</table>
+
+<p>You can create a relationship between the two tables through the "country_code" attribute, which they both share. I prefer to think of these relational attributes as pointers to different tables. Probably because of my C++ background...</p>
+<p><img alt="Table Example" src="/images/table.png" />
+<p class=subnote> Note: Image taken from <u>Seven Databases in Seven Weeks</u> by Eric Redmond and Jim R. Wilson </p></p>
+<p>You have to define a <b>schema</b> when you create your table, which declares what types of objects your database is going to store for that table. It's like defining your types in a static-type programming language. This can be annoying, since you have to architect your data ahead of time. Sometimes you don't know what kind of data you will want to store or how to query it ahead of time. Data normalization is a hard problem, which is removing duplicated data and finding which values are the right keys.</p>
+<table>
+    <tr>
+        <td>
+        <img src='/images/schema.png'>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <center>Schema</center>
+        </td>
+    </tr>
+    <tr>
+        <td>
+        <img src='/images/schema_table.png'>
+        </td>
+    </tr>
+     <tr>
+        <td>
+            <center>Table</center>
+        </td>
+    </tr>
+</table>
+
+<p>Because of the schema, relational databases are strict with what kind of data you put in them. If you define the type of 'dob' to be a "date", it has to take a particular format, MM/DD/YYYY. If you try to input a string or random numbers, the database will throw an error.</p>
+<p>What's nice and powerful about a relational-database are the queries you can make. You can use SQL to filter out data you care about by doing JOINS and getting a new table. This blog post has a great explanation of JOINS if anyone is interested in reading further.</p>
+<p><a href="http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/">A Visual Explanation of SQL Joins</a></p>
+<p>The downsides are that relational databases are pretty inflexible. Because you have to define a schema ahead of time, you can't change what your database is going to store on the fly. However, you are guaranteed that the data will be what the schema says it will be, so you don't have to worry about validation. </p>
+<p>If you design your schema poorly, your database queries can get expensive. If you are doing a lot of joins to calculate your result, queries will take a long time. I can see as your website grows, it would be a lot of work to refactor your schema as your needs change.</p>
+<p>Another major downside of relational databases is scaling. You can improve the hardware of your server, which is expensive and may cause downtime. But this has a ceiling as well. You can try distributive computing, by breaking up your database into clusters (multiple computers). But splitting up your database is not that easy..</p>
+<p>A lot of relational-databases do <strong>sharding</strong> to scale to multiple servers, which is a fancy term for splitting up the rows of the table in some logical way to different servers. </p>
+<p><img src="/images/sharding.jpg" alt="Sharding" style="width: 400px;"/>
+<p class=subnote> Crude, but awesome, example of sharding! Imagine this table has only one column and holds rows 'eggs, other crap, dogs, and fish'. Now dogs and fish are split out to they own separate servers, while egg and crap are within their own servers.
+<p class=subnote> Note: Image taking from Shai Wininger from his <a href="http://hackingshmacking.com/tag/haproxy/">blog entry</a>.</p>
+<p>However, figuring out how to split up your data in a relational database is not trivial. You will need to write sharding code, also known as a load balancer, that manages where your data and queries go. Handing JOIN, and UNION also gets super complicated, since you have to deal with which computers to look at, not just tables. Overall, it is a lot of work to scale a relational database.</p>
+<p>There are systems that do auto-sharding, like MySQL Cluster. But overall, relational databases get non-linear pretty quickly, causing latency issues, especially if your schema sucks. You can scale your relational database with big data, but it is a lot of work and/or a lot of money. Overall, there are better solutions out there if you know your database is going to grow massively. </p>
+<h2>Type: Key-Value Store</h2>
+<h4>Examples: Riak, HBase, Redis, memcached</h4>
+<p>Databases with the key-value model store data based on a key, which is VERY similar to a hash table. Because of the simplicity of their design, partitioning (horizontal scaling) is done really easily. Just split the data based on the hash function. </p>
+<h3>Redis and memcached</h3>
+<p>However, with memcached and Redis, all the data lives in RAM. Because of this, both databases are incredibly fast at reads and writes. This is great if you are working with time sensitive data, like stock prices. Redis can write to disk if it ever shuts down, so it stays persistence, but can't read from disk while its on. Memcached doesn't do this, so the data is lost when it shuts down. </p>
+<p>Redis is currently working on <a href="http://redis.io/topics/cluster-tutorial">clustering in order to make it scalable</a>, but it is in its alpha stages. Overall, I wouldn't use these databases as your main data store unless you are working on something small. Rather I would complement your web app with another database, like Riak, HBase or another relational/document database.</p>
+<p>Speaking of Riak and HBase, lets get into these key-value stores!</p>
+<h3>Riak</h3>
+<p>Riak is based on the Amazon Dynamo paper, which is apparently a famous paper according to Lindsey Kuper! It's a fairly new database, and it seems to be what all the cool kids are talking about nowadays. Riak and HBase are both meant to be used for distributed systems. They were designed with scaling in mind and thus are easily able to be partitioned out to different servers.</p>
+<p>What's cool about Riak is that any sever in your distributed system can read or write to the database! It is also fault-tolerant, which means you won't lose data if few of your servers die. But there is a trade-off. You can't get immediate consistency. This is because while you are writing to one server, it will take awhile to update your other servers about it. However, they do guarantee <strong>eventual consistency</strong>. This basically means that if no one writes to the database for awhile, the database will eventually be consistent. Sounds kind of shady to me. However, this database is great if you need to be able to read and write quickly while giving up a little bit of consistency. </p>
+<p>Riak also has this awesome documentation where they annotate the Amazon Dynamo paper with how Riak was designed. If you are interested in learning the internals of Riak and how it is implemented, I highly recommend reading this!</p>
+<p><a href="http://docs.basho.com/riak/latest/theory/dynamo/">Dynamo: Amazon's Highly Available Key-Value Store with Riak annotations</a></p>
+<p>In Riak, you can query for data by giving it a key. You can also assign a secondary index during write-time, which is like giving the object a second key. So you can access the object by querying either key. You can even do a full on text-search to find your data!</p>
+<p>During this portion of the talk, I also learned how <b>MapReduce</b> worked! This is how Riak implements the full-text search. I always thought of MapReduce as this fancy buzzword, but after Eric explained it, I felt silly not knowing about it sooner. I'd thought I share it with you all!</p>
+<p>Lets say you have a partitioned key-value store in four servers. In this key-value, we store a username and age. We want to calculate the average age of all the users we have for our website. One way to go about it is to query four servers for all the users and manually calculate the average age on the client machine. But that would be REALLY slow. However, with MapReduce, each server calculates the average age within their database and pushes that result upstream! We map the function to the servers, in which the servers run that function on each of their data-entries. Then it gets reduced to one value, which is returned to the client to combine.</p>
+<h3>HBase</h3>
+<p>HBase is also a key-value store that is based on Google's Bigtable paper, which is somewhat the opposite of Riak. It gives you immediate consistency, but compromises on availability for reads and writes. HBase uses a master/slave model where only certain servers are able to write. </p>
+<p>I want to write more, but this blog post is getting way to long. So tune in next week as I go into HBase, document databases and graph databases!</p><p>There are <a href="http://litacho.github.io/databases.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+        
+
+ 
+            <li><article class="hentry">    
+                <header>
+                        <h1><a href="http://litacho.github.io/pip-freeze.html" rel="bookmark" title="Permalink to Fun with Python and pip!">Fun with Python and pip!</a></h1>
+                </header>
+                
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-03-22T00:00:00">
                 Sat 22 March 2014
@@ -58,32 +181,16 @@
                 By <a class="url fn" href="http://litacho.github.io/author/lita-cho.html">Lita Cho</a>
         </address>
 <p>In <a href="http://litacho.github.io/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://litacho.github.io/tag/pip.html">pip</a><a href="http://litacho.github.io/tag/python.html">python</a><a href="http://litacho.github.io/tag/hacker-school.html">hacker school</a></p></footer><!-- /.post-info --><p>I have been programming in Python for quite awhile now. However, I am still
+<p>tags: <a href="http://litacho.github.io/tag/pip.html">pip</a><a href="http://litacho.github.io/tag/python.html">python</a><a href="http://litacho.github.io/tag/hacker-school.html">hacker school</a></p></footer><!-- /.post-info -->                    <div class="summery">
+                        <p>I have been programming in Python for quite awhile now. However, I am still
 learning new things all the time about this language! I was able to download the
 source code for CPython and learn a lot about the internals! I even committed
 TWO patches to the CPython!</p>
-<p>David, a fellow Hacker Schooler, showed me a cool way to list out all my
-dependences in my Python project! This is very useful for people who what to run
-my Python project.</p>
-<p><code>pip freeze &gt; requirements.txt</code></p>
-<p>The command, pip freeze, prints out all the required modules that need to be
-downloaded to run my project. I write that out to a text file
-('requirements.txt') and save that to my project.</p>
-<p>Then if someone wants to run my program, rather than me listing out my modules
-in a README or them looking at my code for the modules, all they need to do is
-run</p>
-<p><code>pip install -r requirements.txt</code></p>
-<p>and pip installs everything for you!!! How cool is that? Now all my friends who
-are reviewing my code won't complain about how hard my projects are to setup!</p>
-<p>I had no idea pip was so powerful! <code>pip list -e</code> lists all the out-dated
-libraries you have in your project, <code>pip search &lt;query&gt;</code> searches the PyPi
-libraries for modules! I need to learn more about the program!</p>
-<p>I am working on this HUGE blog post about Databases. But it needs to be proof-read and refined. Hopefully I get that out soon!</p><p>There are <a href="http://litacho.github.io/pip-freeze.html#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>David, a ...</p>
+                        <a class="readmore" href="http://litacho.github.io/pip-freeze.html">read more</a>
+<p>There are <a href="http://litacho.github.io/pip-freeze.html#disqus_thread">comments</a>.</p>                    </div>
+                </div><!-- /.entry-content -->
+            </article></li>
         
 
  

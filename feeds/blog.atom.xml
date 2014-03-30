@@ -1,5 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Lita Cho</title><link href="http://litacho.github.io/" rel="alternate"></link><link href="http://litacho.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://litacho.github.io/</id><updated>2014-03-22T00:00:00-04:00</updated><entry><title>Fun with Python and pip!</title><link href="http://litacho.github.io/pip-freeze.html" rel="alternate"></link><updated>2014-03-22T00:00:00-04:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-03-22:pip-freeze.html</id><summary type="html">&lt;p&gt;I have been programming in Python for quite awhile now. However, I am still
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Lita Cho</title><link href="http://litacho.github.io/" rel="alternate"></link><link href="http://litacho.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://litacho.github.io/</id><updated>2014-03-23T00:00:00-04:00</updated><entry><title>Databases</title><link href="http://litacho.github.io/databases.html" rel="alternate"></link><updated>2014-03-23T00:00:00-04:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-03-23:databases.html</id><summary type="html">&lt;p&gt;I've been learning a lot about databases lately, and what sort of databases are out there currently. A fellow Hacker Schooler pointed me &lt;a href="http://opensourcebridge.org/sessions/557"&gt;A Dozen Databases in 45 Minutes&lt;/a&gt; by Eric Redmond, which was a pretty good overview of whats out there.&lt;/p&gt;
+&lt;p&gt;After listening to this presentation and talking with another Hacker Schooler about databases, I thought I'd share what I learned. I am mostly going to go deeper with Open Source databases, so anyone can try using them at home.&lt;/p&gt;
+&lt;h2&gt;Type: Relational Databases&lt;/h2&gt;
+&lt;h4&gt;Examples: MySQL, PostgreSQL&lt;/h4&gt;
+&lt;p&gt;This is the most common database out there. It has been around for a long time and it is very mature. You have a collection of 2D tables (rows and columns), very similar to Excel spreadsheets. However, you can add relationships between tables. Lets say you have the following two tables.&lt;/p&gt;
+&lt;table style="width:400px"&gt;
+&lt;tr&gt;
+  &lt;th&gt;name&lt;/th&gt;
+  &lt;th&gt;postal_code&lt;/th&gt;     
+  &lt;th&gt;country_code&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr style="border-top: 1px solid black"&gt;
+  &lt;td&gt;San Francisco&lt;/td&gt;
+  &lt;td&gt;94109&lt;/td&gt;        
+  &lt;td&gt;us&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;Portland&lt;/td&gt;
+  &lt;td&gt;97205&lt;/td&gt;      
+  &lt;td&gt;us&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;table style="width:300px"&gt;
+&lt;tr&gt;
+  &lt;th&gt;country_code&lt;/th&gt;
+  &lt;th&gt;country_name&lt;/th&gt;     
+&lt;/tr&gt;
+&lt;tr style="border-top: 1px solid black"&gt;
+  &lt;td&gt;us&lt;/td&gt;
+  &lt;td&gt;United States&lt;/td&gt;        
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;mx&lt;/td&gt;
+  &lt;td&gt;Mexcio&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;au&lt;/td&gt;
+  &lt;td&gt;Australia&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;You can create a relationship between the two tables through the "country_code" attribute, which they both share. I prefer to think of these relational attributes as pointers to different tables. Probably because of my C++ background...&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Table Example" src="/images/table.png" /&gt;
+&lt;p class=subnote&gt; Note: Image taken from &lt;u&gt;Seven Databases in Seven Weeks&lt;/u&gt; by Eric Redmond and Jim R. Wilson &lt;/p&gt;&lt;/p&gt;
+&lt;p&gt;You have to define a &lt;b&gt;schema&lt;/b&gt; when you create your table, which declares what types of objects your database is going to store for that table. It's like defining your types in a static-type programming language. This can be annoying, since you have to architect your data ahead of time. Sometimes you don't know what kind of data you will want to store or how to query it ahead of time. Data normalization is a hard problem, which is removing duplicated data and finding which values are the right keys.&lt;/p&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+        &lt;img src='/images/schema.png'&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;center&gt;Schema&lt;/center&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+        &lt;img src='/images/schema_table.png'&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+     &lt;tr&gt;
+        &lt;td&gt;
+            &lt;center&gt;Table&lt;/center&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Because of the schema, relational databases are strict with what kind of data you put in them. If you define the type of 'dob' to be a "date", it has to take a particular format, MM/DD/YYYY. If you try to input a string or random numbers, the database will throw an error.&lt;/p&gt;
+&lt;p&gt;What's nice and powerful about a relational-database are the queries you can make. You can use SQL to filter out data you care about by doing JOINS and getting a new table. This blog post has a great explanation of JOINS if anyone is interested in reading further.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/"&gt;A Visual Explanation of SQL Joins&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The downsides are that relational databases are pretty inflexible. Because you have to define a schema ahead of time, you can't change what your database is going to store on the fly. However, you are guaranteed that the data will be what the schema says it will be, so you don't have to worry about validation. &lt;/p&gt;
+&lt;p&gt;If you design your schema poorly, your database queries can get expensive. If you are doing a lot of joins to calculate your result, queries will take a long time. I can see as your website grows, it would be a lot of work to refactor your schema as your needs change.&lt;/p&gt;
+&lt;p&gt;Another major downside of relational databases is scaling. You can improve the hardware of your server, which is expensive and may cause downtime. But this has a ceiling as well. You can try distributive computing, by breaking up your database into clusters (multiple computers). But splitting up your database is not that easy..&lt;/p&gt;
+&lt;p&gt;A lot of relational-databases do &lt;strong&gt;sharding&lt;/strong&gt; to scale to multiple servers, which is a fancy term for splitting up the rows of the table in some logical way to different servers. &lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/sharding.jpg" alt="Sharding" style="width: 400px;"/&gt;
+&lt;p class=subnote&gt; Crude, but awesome, example of sharding! Imagine this table has only one column and holds rows 'eggs, other crap, dogs, and fish'. Now dogs and fish are split out to they own separate servers, while egg and crap are within their own servers.
+&lt;p class=subnote&gt; Note: Image taking from Shai Wininger from his &lt;a href="http://hackingshmacking.com/tag/haproxy/"&gt;blog entry&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;However, figuring out how to split up your data in a relational database is not trivial. You will need to write sharding code, also known as a load balancer, that manages where your data and queries go. Handing JOIN, and UNION also gets super complicated, since you have to deal with which computers to look at, not just tables. Overall, it is a lot of work to scale a relational database.&lt;/p&gt;
+&lt;p&gt;There are systems that do auto-sharding, like MySQL Cluster. But overall, relational databases get non-linear pretty quickly, causing latency issues, especially if your schema sucks. You can scale your relational database with big data, but it is a lot of work and/or a lot of money. Overall, there are better solutions out there if you know your database is going to grow massively. &lt;/p&gt;
+&lt;h2&gt;Type: Key-Value Store&lt;/h2&gt;
+&lt;h4&gt;Examples: Riak, HBase, Redis, memcached&lt;/h4&gt;
+&lt;p&gt;Databases with the key-value model store data based on a key, which is VERY similar to a hash table. Because of the simplicity of their design, partitioning (horizontal scaling) is done really easily. Just split the data based on the hash function. &lt;/p&gt;
+&lt;h3&gt;Redis and memcached&lt;/h3&gt;
+&lt;p&gt;However, with memcached and Redis, all the data lives in RAM. Because of this, both databases are incredibly fast at reads and writes. This is great if you are working with time sensitive data, like stock prices. Redis can write to disk if it ever shuts down, so it stays persistence, but can't read from disk while its on. Memcached doesn't do this, so the data is lost when it shuts down. &lt;/p&gt;
+&lt;p&gt;Redis is currently working on &lt;a href="http://redis.io/topics/cluster-tutorial"&gt;clustering in order to make it scalable&lt;/a&gt;, but it is in its alpha stages. Overall, I wouldn't use these databases as your main data store unless you are working on something small. Rather I would complement your web app with another database, like Riak, HBase or another relational/document database.&lt;/p&gt;
+&lt;p&gt;Speaking of Riak and HBase, lets get into these key-value stores!&lt;/p&gt;
+&lt;h3&gt;Riak&lt;/h3&gt;
+&lt;p&gt;Riak is based on the Amazon Dynamo paper, which is apparently a famous paper according to Lindsey Kuper! It's a fairly new database, and it seems to be what all the cool kids are talking about nowadays. Riak and HBase are both meant to be used for distributed systems. They were designed with scaling in mind and thus are easily able to be partitioned out to different servers.&lt;/p&gt;
+&lt;p&gt;What's cool about Riak is that any sever in your distributed system can read or write to the database! It is also fault-tolerant, which means you won't lose data if few of your servers die. But there is a trade-off. You can't get immediate consistency. This is because while you are writing to one server, it will take awhile to update your other servers about it. However, they do guarantee &lt;strong&gt;eventual consistency&lt;/strong&gt;. This basically means that if no one writes to the database for awhile, the database will eventually be consistent. Sounds kind of shady to me. However, this database is great if you need to be able to read and write quickly while giving up a little bit of consistency. &lt;/p&gt;
+&lt;p&gt;Riak also has this awesome documentation where they annotate the Amazon Dynamo paper with how Riak was designed. If you are interested in learning the internals of Riak and how it is implemented, I highly recommend reading this!&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://docs.basho.com/riak/latest/theory/dynamo/"&gt;Dynamo: Amazon's Highly Available Key-Value Store with Riak annotations&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In Riak, you can query for data by giving it a key. You can also assign a secondary index during write-time, which is like giving the object a second key. So you can access the object by querying either key. You can even do a full on text-search to find your data!&lt;/p&gt;
+&lt;p&gt;During this portion of the talk, I also learned how &lt;b&gt;MapReduce&lt;/b&gt; worked! This is how Riak implements the full-text search. I always thought of MapReduce as this fancy buzzword, but after Eric explained it, I felt silly not knowing about it sooner. I'd thought I share it with you all!&lt;/p&gt;
+&lt;p&gt;Lets say you have a partitioned key-value store in four servers. In this key-value, we store a username and age. We want to calculate the average age of all the users we have for our website. One way to go about it is to query four servers for all the users and manually calculate the average age on the client machine. But that would be REALLY slow. However, with MapReduce, each server calculates the average age within their database and pushes that result upstream! We map the function to the servers, in which the servers run that function on each of their data-entries. Then it gets reduced to one value, which is returned to the client to combine.&lt;/p&gt;
+&lt;h3&gt;HBase&lt;/h3&gt;
+&lt;p&gt;HBase is also a key-value store that is based on Google's Bigtable paper, which is somewhat the opposite of Riak. It gives you immediate consistency, but compromises on availability for reads and writes. HBase uses a master/slave model where only certain servers are able to write. &lt;/p&gt;
+&lt;p&gt;I want to write more, but this blog post is getting way to long. So tune in next week as I go into HBase, document databases and graph databases!&lt;/p&gt;</summary><category term="databases"></category><category term="web"></category><category term="hacker school"></category></entry><entry><title>Fun with Python and pip!</title><link href="http://litacho.github.io/pip-freeze.html" rel="alternate"></link><updated>2014-03-22T00:00:00-04:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-03-22:pip-freeze.html</id><summary type="html">&lt;p&gt;I have been programming in Python for quite awhile now. However, I am still
 learning new things all the time about this language! I was able to download the
 source code for CPython and learn a lot about the internals! I even committed
 TWO patches to the CPython!&lt;/p&gt;
@@ -40,7 +138,7 @@ sucks right now. Evan is working on making an installer. For now, I  mostly did
 my coding on the interactive browser, which compiles the code on Evan's server.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://elm-lang.org/try"&gt;Try Elm!&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Starting was SOOOoo hard. I just tried writing a linked-list...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="n"&gt;LinkedList&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Empty&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;Cons&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LinkedList&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="n"&gt;LinkedList&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Empty&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;Cons&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LinkedList&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;generateList&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;then&lt;/span&gt; &lt;span class="n"&gt;Empty&lt;/span&gt; 
                  &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="n"&gt;Cons&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;generateList&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;span class="n"&gt;main&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asText&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;generateList&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -58,7 +156,7 @@ ended up creating.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://share-elm.com/sprout/5317940ee4b0f7cc0dd4e16d"&gt;Red Bouncing Ball&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I have to admit, I had a lot of help from Evan. I had trouble understanding how 
 data was flowing. He made these diagrams:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt;
 &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -84,7 +182,7 @@ to each ball in the old state (ignoring the ball itself in the old state). Then
 the method outputs a new ball with the updated positions and velocities. You
 then &lt;code&gt;map&lt;/code&gt; that to all the balls to get the new state.&lt;/p&gt;
 &lt;p&gt;Here is the million-dollar code that does this, which I can't believe I wrote...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;distance &lt;span class="p"&gt;(&lt;/span&gt;b1&lt;span class="p"&gt;,&lt;/span&gt;b2&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;b2.x&lt;span class="o"&gt;-&lt;/span&gt;b1.x&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;b2.y&lt;span class="o"&gt;-&lt;/span&gt;b1.y&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;distance &lt;span class="p"&gt;(&lt;/span&gt;b1&lt;span class="p"&gt;,&lt;/span&gt;b2&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;b2.x&lt;span class="o"&gt;-&lt;/span&gt;b1.x&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;b2.y&lt;span class="o"&gt;-&lt;/span&gt;b1.y&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;
 
 collision  oldBall newBall &lt;span class="o"&gt;=&lt;/span&gt; 
     &lt;span class="kr"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;not &lt;span class="p"&gt;(&lt;/span&gt;newBall &lt;span class="o"&gt;==&lt;/span&gt; oldBall&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;distance &lt;span class="p"&gt;(&lt;/span&gt;oldBall&lt;span class="p"&gt;,&lt;/span&gt;newBall&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;radius&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -107,7 +205,7 @@ check all the balls against one old ball.&lt;/p&gt;
 &lt;p&gt;Lastly, I map the update function to all the old balls.&lt;/p&gt;
 &lt;p&gt;Here is the result of my week-long effort. It came to about 73 lines of code! I
 think that is impressive for a newbie learning functional programming.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://share-elm.com/sprout/5320e1f1e4b0f7cc0dd4e697"&gt;Colliding Colorful Balls!&lt;/a&gt; - Click on the white canvas to make balls 
+&lt;p&gt;&lt;a href="http://bit.ly/1j49ggu"&gt;Colliding Colorful Balls!&lt;/a&gt; - Click on the white canvas to make balls 
 appear!&lt;/p&gt;</summary><category term="elm"></category><category term="website"></category><category term="hacker school"></category></entry><entry><title>2 Weeks into Hacker School! Progress on my Bittorrent Client</title><link href="http://litacho.github.io/2-weeks-into-hacker-school-progress-on-my-bittorrent-client.html" rel="alternate"></link><updated>2014-02-24T02:56:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-02-24:2-weeks-into-hacker-school-progress-on-my-bittorrent-client.html</id><summary type="html">&lt;p&gt;Wow! I can't believe two weeks has gone by! I feel like I am learning a
 lot, but not learning enough. At the end of the day, I always want to
 code more. It is so hard to focus on your projects while at Hacker

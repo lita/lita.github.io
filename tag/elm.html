@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="http://litacho.github.io/theme/css/main.css" type="text/css" />
         <link rel="stylesheet" href="http://litacho.github.io/theme/css/syntax.css" type="text/css" />
          <link rel="stylesheet" href="http://litacho.github.io/theme/css/social.css" type="text/css" />
+          <link rel="stylesheet" href="http://litacho.github.io/theme/css/monokai.css" type="text/css" />
 
 
 
@@ -76,7 +77,7 @@ sucks right now. Evan is working on making an installer. For now, I  mostly did
 my coding on the interactive browser, which compiles the code on Evan's server.</p>
 <p><a href="http://elm-lang.org/try">Try Elm!</a></p>
 <p>Starting was SOOOoo hard. I just tried writing a linked-list...</p>
-<div class="highlight"><pre><span class="n">data</span> <span class="n">LinkedList</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Empty</span> <span class="o">|</span> <span class="n">Cons</span> <span class="n">a</span> <span class="p">(</span><span class="n">LinkedList</span> <span class="n">a</span><span class="p">)</span>
+<div class="codehilite"><pre><span class="n">data</span> <span class="n">LinkedList</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Empty</span> <span class="o">|</span> <span class="n">Cons</span> <span class="n">a</span> <span class="p">(</span><span class="n">LinkedList</span> <span class="n">a</span><span class="p">)</span>
 <span class="n">generateList</span> <span class="n">x</span> <span class="o">=</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span> <span class="n">then</span> <span class="n">Empty</span> 
                  <span class="k">else</span> <span class="n">Cons</span> <span class="n">x</span> <span class="p">(</span><span class="n">generateList</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">main</span> <span class="o">=</span> <span class="n">asText</span> <span class="p">(</span><span class="n">generateList</span> <span class="mi">10</span><span class="p">)</span>
@@ -94,7 +95,7 @@ ended up creating.</p>
 <p><a href="http://share-elm.com/sprout/5317940ee4b0f7cc0dd4e16d">Red Bouncing Ball</a></p>
 <p>I have to admit, I had a lot of help from Evan. I had trouble understanding how 
 data was flowing. He made these diagrams:</p>
-<div class="highlight"><pre><span class="n">add</span><span class="o">:</span> <span class="n">Int</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="o">-&gt;</span> <span class="n">Int</span>
+<div class="codehilite"><pre><span class="n">add</span><span class="o">:</span> <span class="n">Int</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="o">-&gt;</span> <span class="n">Int</span>
 <span class="n">add</span> <span class="n">a</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </pre></div>
 
@@ -120,7 +121,7 @@ to each ball in the old state (ignoring the ball itself in the old state). Then
 the method outputs a new ball with the updated positions and velocities. You
 then <code>map</code> that to all the balls to get the new state.</p>
 <p>Here is the million-dollar code that does this, which I can't believe I wrote...</p>
-<div class="highlight"><pre>distance <span class="p">(</span>b1<span class="p">,</span>b2<span class="p">)</span> <span class="o">=</span> <span class="p">(</span>b2.x<span class="o">-</span>b1.x<span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="p">(</span>b2.y<span class="o">-</span>b1.y<span class="p">)</span><span class="o">^</span><span class="m">2</span>
+<div class="codehilite"><pre>distance <span class="p">(</span>b1<span class="p">,</span>b2<span class="p">)</span> <span class="o">=</span> <span class="p">(</span>b2.x<span class="o">-</span>b1.x<span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="p">(</span>b2.y<span class="o">-</span>b1.y<span class="p">)</span><span class="o">^</span><span class="m">2</span>
 
 collision  oldBall newBall <span class="o">=</span> 
     <span class="kr">if</span> <span class="p">(</span>not <span class="p">(</span>newBall <span class="o">==</span> oldBall<span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>distance <span class="p">(</span>oldBall<span class="p">,</span>newBall<span class="p">)</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="m">2</span><span class="o">*</span>radius<span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
@@ -143,7 +144,7 @@ check all the balls against one old ball.</p>
 <p>Lastly, I map the update function to all the old balls.</p>
 <p>Here is the result of my week-long effort. It came to about 73 lines of code! I
 think that is impressive for a newbie learning functional programming.</p>
-<p><a href="http://share-elm.com/sprout/5320e1f1e4b0f7cc0dd4e697">Colliding Colorful Balls!</a> - Click on the white canvas to make balls 
+<p><a href="http://bit.ly/1j49ggu">Colliding Colorful Balls!</a> - Click on the white canvas to make balls 
 appear!</p><p>There are <a href="http://litacho.github.io/working-with-elm.html#disqus_thread">comments</a>.</p>                </article>
 <p class="paginator">
     Page 1 / 1
