@@ -49,7 +49,181 @@
 
             <aside id="body" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://litacho.github.io/pip-freeze.html">Fun with Python and pip!</a></h1> 
+                    <h1 class="entry-title"><a href="http://litacho.github.io/path-and-import.html">Path Module</a></h1> 
+<footer class="post-info">
+        <abbr class="published" title="2014-03-31T00:00:00">
+                Mon 31 March 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://litacho.github.io/author/lita-cho.html">Lita Cho</a>
+        </address>
+<p>In <a href="http://litacho.github.io/category/blog.html">Blog</a>. </p>
+<p>tags: <a href="http://litacho.github.io/tag/python.html">python</a><a href="http://litacho.github.io/tag/hacker-school.html">hacker school</a><a href="http://litacho.github.io/tag/path-module.html">path module</a><a href="http://litacho.github.io/tag/previous-life.html">previous life</a></p></footer><!-- /.post-info --><p>In order to take a break from making Flask apps, my Bittorrent client, messing with various databases, and reading HTTP protocol documentation, I wanted to write about Python, something I'm know.</p>
+<p>While working at Dreamworks Animation, my favorite module was the "path" module. This is a 3rd party module dealing with file paths. It makes paths as first class objects, allowing you to do some common operations on them.  We had our own version at Dreamworks, which hooks into our proprietary software. But path.py is still useful by itself. This is way better than using os.path. Hopefully, after this blog post, you will never use os.path... ever.</p>
+<p>You might think module sounds boring. I mean, file directories... really? Well, when you are working with hundreds of thousands of images (30 frames in a second, 90 minutes in an animated film, so we are talking 30<em>60</em>90=162,000 images for an entire movie, not including composite layers that make up one image), this module is a godsend. We were constantly renaming, deleting, copying and moving files all over the place. Most of the marketing tasks were frankensteining some frames together in order to meet deadlines. </p>
+<p>But you can use this module in everyday tasks! Like cleaning up unnecessary data or making a script to rename some music files in Python! Here are some examples of using this module! If you are following along, please start in an empty directory.</p>
+<p>First lets install this module.</p>
+<div class="codehilite"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">path</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+
+
+<p>Okay, time to start playing with it!</p>
+<div class="codehilite"><pre><span class="n">from</span> <span class="n">path</span> <span class="n">import</span> <span class="n">path</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">path</span><span class="p">(</span><span class="sc">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>This will create a path object that is pointed to your current directory! One of my favorite features is how easy and readable it is to append directories to the path. For example, you can do this!</p>
+<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]</span><span class="o">:</span> <span class="n">t</span> <span class="o">=</span> <span class="n">root</span> <span class="o">/</span> <span class="s">&quot;test&quot;</span> <span class="o">/</span> <span class="s">&quot;a&quot;</span> <span class="o">/</span> <span class="s">&quot;long&quot;</span> <span class="o">/</span> <span class="s">&quot;directory&quot;</span> <span class="o">/</span> <span class="s">&quot;tree&quot;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]</span><span class="o">:</span> <span class="n">print</span> <span class="n">t</span>
+<span class="n">test</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="kt">long</span><span class="o">/</span><span class="n">directory</span><span class="o">/</span><span class="n">tree</span> 
+</pre></div>
+
+
+<p>How awesome is that?? You can even ask if the directory exists or not. </p>
+<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]</span><span class="o">:</span> <span class="n">t</span><span class="p">.</span><span class="n">exists</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span><span class="o">:</span> <span class="n">False</span>
+</pre></div>
+
+
+<p>Lets go ahead and make this directory!</p>
+<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]</span><span class="o">:</span> <span class="n">t</span><span class="p">.</span><span class="n">makedirs</span><span class="p">()</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]</span><span class="o">:</span> <span class="n">t</span><span class="p">.</span><span class="n">exists</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">25</span><span class="p">]</span><span class="o">:</span> <span class="n">True</span>
+</pre></div>
+
+
+<p>How easy was that?! You can also give it permissions with the <code>mode</code> flag! By default, permissions is set to 511.</p>
+<p>Let's make a lot of directories!</p>
+<div class="codehilite"><pre><span class="n">import</span> <span class="n">random</span>
+
+<span class="n">def</span> <span class="n">make_fake_directories</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">root</span> <span class="o">/</span> <span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span><span class="o">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">/</span> <span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">s</span><span class="p">.</span><span class="n">makedirs</span><span class="p">()</span>
+
+<span class="n">make_fake_directories</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+</pre></div>
+
+
+<p>This function creates 10 directories with random directory depth, within a range from 0 to 10. Lets see if this worked</p>
+<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]</span><span class="o">:</span> <span class="n">root</span><span class="p">.</span><span class="n">dirs</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">26</span><span class="p">]</span><span class="o">:</span> 
+<span class="p">[</span><span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./0&quot;</span><span class="p">),</span>
+ <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./1&quot;</span><span class="p">),</span>
+ <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./2&quot;</span><span class="p">),</span>
+ <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./3&quot;</span><span class="p">),</span>
+ <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./4&quot;</span><span class="p">),</span>
+ <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./5&quot;</span><span class="p">),</span>
+ <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./6&quot;</span><span class="p">),</span>
+ <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./7&quot;</span><span class="p">),</span>
+ <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./8&quot;</span><span class="p">),</span>
+ <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./9&quot;</span><span class="p">),</span>
+ <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./env&quot;</span><span class="p">),</span>
+ <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./plugins&quot;</span><span class="p">),</span>
+ <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./test&quot;</span><span class="p">)]</span>
+</pre></div>
+
+
+<p>Lets create a file at the end of directory depth!</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">dir</span> <span class="n">in</span> <span class="n">root</span><span class="p">.</span><span class="n">walkdirs</span><span class="p">()</span><span class="o">:</span>
+    <span class="k">if</span> <span class="n">not</span> <span class="n">dir</span><span class="p">.</span><span class="n">dirs</span><span class="p">()</span><span class="o">:</span>
+        <span class="n">file</span> <span class="o">=</span>  <span class="n">dir</span> <span class="o">/</span> <span class="s">&quot;myfile&quot;</span>
+        <span class="n">file</span><span class="p">.</span><span class="n">touch</span><span class="p">()</span>
+</pre></div>
+
+
+<p><code>walkdirs</code> returns a generator that iterates through your directory structure until you've looked at every folder. It is basically doing in-order traversal. </p>
+<p>We can use <code>walkfiles</code> to see if we created the necessary files!</p>
+<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">117</span><span class="p">]</span><span class="o">:</span> <span class="k">for</span> <span class="n">files</span> <span class="n">in</span> <span class="n">root</span><span class="p">.</span><span class="n">walkfiles</span><span class="p">()</span><span class="o">:</span>
+   <span class="p">.....</span><span class="o">:</span>     <span class="n">print</span> <span class="n">files</span>
+   <span class="p">.....</span><span class="o">:</span>     
+<span class="p">.</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="n">myfile</span>
+<span class="p">.</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">6</span><span class="o">/</span><span class="mi">7</span><span class="o">/</span><span class="n">myfile</span>
+<span class="p">.</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="n">myfile</span>
+<span class="p">.</span><span class="o">/</span><span class="mi">6</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">myfile</span>
+<span class="p">.</span><span class="o">/</span><span class="mi">7</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">myfile</span>
+<span class="p">.</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">6</span><span class="o">/</span><span class="n">myfile</span>
+<span class="p">.</span><span class="o">/</span><span class="mi">9</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">6</span><span class="o">/</span><span class="mi">7</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="n">myfile</span>
+<span class="p">.</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="n">myfile</span>
+<span class="p">.</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">myfile</span>
+<span class="p">.</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">6</span><span class="o">/</span><span class="mi">7</span><span class="o">/</span><span class="n">myfile</span>
+</pre></div>
+
+
+<p>Okay, lets try to rename my numbered directories into letters! Just because we can. </p>
+<div class="codehilite"><pre><span class="n">def</span> <span class="n">renameDirs</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">for</span> <span class="n">dir</span> <span class="n">in</span> <span class="n">root</span><span class="p">.</span><span class="n">dirs</span><span class="p">()</span><span class="o">:</span>
+        <span class="k">if</span> <span class="n">dir</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">isdigit</span><span class="p">()</span><span class="o">:</span>
+            <span class="k">if</span> <span class="n">dir</span><span class="p">.</span><span class="n">dirs</span><span class="p">()</span><span class="o">:</span>
+                <span class="n">renameDirs</span><span class="p">(</span><span class="n">dir</span><span class="p">)</span>
+            <span class="n">parent</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">dir</span><span class="p">.</span><span class="n">splitpath</span><span class="p">()</span>
+            <span class="n">dir</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">parent</span> <span class="o">/</span> <span class="n">chr</span><span class="p">(</span><span class="n">ord</span><span class="p">(</span><span class="sc">&#39;a&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="kt">int</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">name</span><span class="p">)))</span>
+
+<span class="n">renameDirs</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Woah! A lot of stuff going on here! I wrote a lot of these little recursive functions a lot, but you can do the same thing as <code>walkdirs</code>. Basically, I loop over all the directories in the current directory, and check to see if they have any directories. If so, I recurse. When the function returns, I rename the directory to the ASCII equivalent by using <code>ord</code>. The <code>rename</code> path is a little tricky, as it needs the full path from where your Python module is running from. That is why I call <code>splitpath</code> in order to get the parent directory. Now, we have folders like this!</p>
+<div class="codehilite"><pre><span class="n">a</span><span class="o">/</span>       <span class="n">b</span><span class="o">/</span>       <span class="n">c</span><span class="o">/</span>       <span class="n">d</span><span class="o">/</span>       <span class="n">e</span><span class="o">/</span>       <span class="n">f</span><span class="o">/</span>       <span class="n">g</span><span class="o">/</span>       <span class="n">h</span><span class="o">/</span>       <span class="n">i</span><span class="o">/</span>       <span class="n">j</span><span class="o">/</span>  
+</pre></div>
+
+
+<p>Now we have a directory structure like this! (Note: I shorten the results for brevity.)</p>
+<div class="codehilite"><pre><span class="p">.</span><span class="o">/</span><span class="n">a</span>
+<span class="p">.</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">a</span>
+<span class="p">.</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span>
+<span class="p">.</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span>
+<span class="p">.</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span>
+<span class="p">.</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">e</span>
+<span class="p">.</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="n">f</span>
+<span class="p">.</span><span class="o">/</span><span class="n">b</span>
+<span class="p">.</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">a</span>
+<span class="p">.</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span>
+<span class="p">.</span><span class="o">/</span><span class="n">c</span>
+<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span>
+<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span>
+<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span>
+<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span>
+<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">e</span>
+<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="n">f</span>
+<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="n">f</span><span class="o">/</span><span class="n">g</span>
+<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="n">f</span><span class="o">/</span><span class="n">g</span><span class="o">/</span><span class="n">h</span>
+<span class="p">.</span><span class="o">/</span><span class="n">d</span>
+<span class="p">.</span><span class="o">/</span><span class="n">e</span>
+<span class="p">.</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="n">a</span>
+<span class="p">...</span>
+</pre></div>
+
+
+<p>So now that we are done testing, time to delete these useless directories! </p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">dir</span> <span class="n">in</span> <span class="n">root</span><span class="p">.</span><span class="n">dirs</span><span class="p">()</span><span class="o">:</span>
+    <span class="n">dir</span><span class="p">.</span><span class="n">rmtree</span><span class="p">()</span>
+</pre></div>
+
+
+<p>This will delete the entire directory tree of the current folder. How cool is that? Don't run this if you have any import files or directories in your root folder!!!</p>
+<p>Now that you know the basics, check out this blog about how to write a script a clean-up script for your website!</p>
+<p><a href="http://freepythontips.wordpress.com/2014/01/23/python-101-writing-a-cleanup-script/">Python 101: Writing a cleanup script</a></p>
+<p>Happy scripting!</p><p>There are <a href="http://litacho.github.io/path-and-import.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+        
+
+ 
+            <li><article class="hentry">    
+                <header>
+                        <h1><a href="http://litacho.github.io/pip-freeze.html" rel="bookmark" title="Permalink to Fun with Python and pip!">Fun with Python and pip!</a></h1>
+                </header>
+                
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-03-22T00:00:00">
                 Sat 22 March 2014
@@ -59,31 +233,19 @@
                 By <a class="url fn" href="http://litacho.github.io/author/lita-cho.html">Lita Cho</a>
         </address>
 <p>In <a href="http://litacho.github.io/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://litacho.github.io/tag/pip.html">pip</a><a href="http://litacho.github.io/tag/python.html">python</a><a href="http://litacho.github.io/tag/hacker-school.html">hacker school</a></p></footer><!-- /.post-info --><p>I have been programming in Python for quite awhile now. However, I am still
+<p>tags: <a href="http://litacho.github.io/tag/pip.html">pip</a><a href="http://litacho.github.io/tag/python.html">python</a><a href="http://litacho.github.io/tag/hacker-school.html">hacker school</a></p></footer><!-- /.post-info -->                    <div class="summery">
+                        <p>I have been programming in Python for quite awhile now. However, I am still
 learning new things all the time about this language! I was able to download the
 source code for CPython and learn a lot about the internals! I even committed
 TWO patches to the CPython!</p>
-<p>David, a fellow Hacker Schooler, showed me a cool way to list out all my
-dependences in my Python project! This is very useful for people who what to run
-my Python project.</p>
-<p><code>pip freeze &gt; requirements.txt</code></p>
-<p>The command, pip freeze, prints out all the required modules that need to be
-downloaded to run my project. I write that out to a text file
-('requirements.txt') and save that to my project.</p>
-<p>Then if someone wants to run my program, rather than me listing out my modules
-in a README or them looking at my code for the modules, all they need to do is
-run</p>
-<p><code>pip install -r requirements.txt</code></p>
-<p>and pip installs everything for you!!! How cool is that? Now all my friends who
-are reviewing my code won't complain about how hard my projects are to setup!</p>
-<p>I had no idea pip was so powerful! <code>pip list -e</code> lists all the out-dated
-libraries you have in your project, <code>pip search &lt;query&gt;</code> searches the PyPi
-libraries for modules! I need to learn more about the program!</p>
-<p>I am working on this HUGE blog post about Databases. But it needs to be proof-read and refined. Hopefully I get that out soon!</p><p>There are <a href="http://litacho.github.io/pip-freeze.html#disqus_thread">comments</a>.</p>                </article>
+<p>David, a ...</p>
+                        <a class="readmore" href="http://litacho.github.io/pip-freeze.html">read more</a>
+<p>There are <a href="http://litacho.github.io/pip-freeze.html#disqus_thread">comments</a>.</p>                    </div>
+                </div><!-- /.entry-content -->
+            </article></li>
 <p class="paginator">
     Page 1 / 1
 </p>
-            </aside><!-- /#featured -->
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->
         <section id="extras" class="body">
