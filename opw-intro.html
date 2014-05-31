@@ -125,7 +125,7 @@
 </pre></div>
 
 
-<p>Woah! There is a lot going on here! <code>addCats</code> generates more labels. When we create a Button widget, we need to give it a function that will be called when the button gets clicked. However, you can't pass it any elements. HIGHER ORDER FUNCTIONS TO THE RESCUE! Since we want to pass in the root always, we can create a lambda function that will return a function with root applied to it. We could also partial module as well:</p>
+<p>Woah! There is a lot going on here! <code>addCats</code> generates more labels. When we create a Button widget, we need to give it a function that will be called when the button gets clicked. However, you can't pass it any elements. HIGHER ORDER FUNCTIONS TO THE RESCUE! Since we want to pass in the root always, we can create a lambda function that will return a function with root applied to it. We could also use the partial module as well:</p>
 <div class="codehilite"><pre><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 
 <span class="n">addCats_root</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">addCats</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span>
@@ -135,7 +135,7 @@
 
 <p>Okay, so we made quiet a mess here. I don't know about you, but this is what my GUI looks like:</p>
 <p><img src="/images/tk.png" style="width: 20%; height: 20%"/>​</p>
-<p>Lets add a button that quits the GUI and destroys the widget!</p>
+<p>Lets add a button that quits the GUI and destroys all the widgets properly!</p>
 <div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">&quot;QUIT&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">root</span><span class="o">.</span><span class="n">destroy</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">button</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
 </pre></div>
@@ -144,9 +144,10 @@
 <p>Now a QUIT button should appear, and when you press it, the window should close! Your root object is no longer available to play with though! You will need to create a new Tk object. </p>
 <p>But it was fun just playing around the Tkinter module in the interpreter. Whenever I got into a weird state, I would just destroy the root and start over.</p>
 <h2>Unit testing in Tkinter</h2>
-<p>I learned the hard way that once you close the window or call <code>root.destory()</code>, that object is gone forever and you need to instantiate the object again to get a new one.</p>
 <p>I am going through how the Python project runs their unit tests, and it is pretty impressive. They have test modules in Lib/test folder. For Tkinter, the test modules are test_ttk_guionly.py, test_ttk_textonly.py and test_tk.py. However, these modules call other test modules within the Lib/tkinter/test module. These modules test individual GUI objects by creating them and checking the hard values in the widget. </p>
 <p>However, <a href="http://bugs.python.org/issue17496">not all the Tkinter tests run successfully on Mac OS X</a>. So I have to run them on Ubuntu, which is a bummer. </p>
+<p>I learned the hard way that once you close the window or call <code>root.destory()</code>, that object is gone forever and you need to instantiate the object again to get a new one. <a href="http://bugs.python.org/issue21585">I was trying to run the same set of tests for a GUI object with a different setting within the same module.</a> However, the testing suite uses the same root widget for all the test run from each module, then destroys the root widget. So when I tried to run the tests again from that module, I couldn't because the root widget was destroyed from the previous time it ran.</p>
+<p>I had to make a completely separate testing module with that setting change, which seemed kind of bloated to me.</p>
 <p>Anyway, I am still a beginner to Tkinter and Turtle modules. Turtle seems like a awesome module to play with. I will be telling you more about that next time!</p>
     </div><!-- /.entry-content -->
     <div class="comments">
