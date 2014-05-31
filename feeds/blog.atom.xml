@@ -1,5 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Lita Cho</title><link href="http://litacho.github.io/" rel="alternate"></link><link href="http://litacho.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://litacho.github.io/</id><updated>2014-04-13T00:00:00-04:00</updated><entry><title>Path Module</title><link href="http://litacho.github.io/path-and-import.html" rel="alternate"></link><updated>2014-04-13T00:00:00-04:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-04-13:path-and-import.html</id><summary type="html">&lt;p&gt;In order to take a break from making Flask apps, my Bittorrent client, messing with various databases, and reading HTTP protocol documentation, I wanted to write about Python, something I know.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Lita Cho</title><link href="http://litacho.github.io/" rel="alternate"></link><link href="http://litacho.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://litacho.github.io/</id><updated>2014-05-29T16:18:00-04:00</updated><entry><title>OPW and Tkinter!</title><link href="http://litacho.github.io/opw-intro.html" rel="alternate"></link><updated>2014-05-29T16:18:00-04:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-05-29:opw-intro.html</id><summary type="html">&lt;p&gt;After Hacker School, I got accepted to the GNOME: Outreach Program for Women (OPW), where I get to spend a summer working on CPython with none other than &lt;a href="https://twitter.com/jessicamckellar"&gt;Jessica Mckellar&lt;/a&gt;. For the next three months, I'm working on making GUIs better in Python. &lt;/p&gt;
+&lt;p&gt;It has been a week and half already, and so far I am getting my hands dirty by fixing bugs and code reviewing other people's patches. &lt;/p&gt;
+&lt;p&gt;For this blog post, I thought I'd talk about Tkinter, the GUI module in Python, and how to start using it! &lt;/p&gt;
+&lt;p&gt;Note: All the following examples will only work with Python 3. I'm moving on! GOOD-BYE PYTHON 2.7!!&lt;/p&gt;
+&lt;p&gt;In GUI programming, I like to think of the GUI as a tree or a graph. The root is your main GUI window, and within it contains different elements (Labels, Buttons, Images, TextBoxes, etc. Also known as Widgets), which are your children to your tree.&lt;/p&gt;
+&lt;p&gt;Let's start with Hello World. Python is cool because I can interactively mess with a module using the interpreter.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;tkinter&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;tk&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tk&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Tk&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Notice that a window pops up! Yay, that is your root GUI window with nothing in it! Don't close this window! This will destroy the root GUI object, and you won't be able to get it back! If you did, no big deal, just instantiate another one.&lt;/p&gt;
+&lt;p&gt;Let's add a label with the word, "Hello World!"&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;w&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tk&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Label&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Hello, World!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Wait, what? Nothing has happened... what is going on here? Where is my label?&lt;/p&gt;
+&lt;p&gt;Lets briefly go over Geometry Managers! Geometry Managers manage where widgets should go within their parent. They determine the placement of the widgets they are in charge of. There are different kinds of Geometry Managers within Tkinter. However, the most popular one is called "The Packer". The Packer sets the size of a widget by determining the size of it's children first and packing it closely together. You can put frames and padding to get the look you desire, but ultimately, your window is going to packed to the minimal size by default.&lt;/p&gt;
+&lt;p&gt;We haven't specified what type of geometry manager to use. Let's go ahead and use "The Packer" as our geometry manager! It is super easy! All we need to do is call the &lt;code&gt;pack()&lt;/code&gt; method.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Yes! Our widget shows up! We can pass in settings to &lt;code&gt;pack&lt;/code&gt; method. These settings adjust where the widget is going to appear within its container, and how it will behave when the main application window is resized. Lets try put another Label.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tk&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Label&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Hello, World!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;By default, the packer sets the widgets on top of each other as the window expands. However, we can change this!&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;side&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;left&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you didn't expand your window, then the text didn't change. However, if you expand the window, one of the labels stays on the top, while the other goes toward to the left! There are other settings, which you can find in the &lt;a href="https://docs.python.org/3.4/library/tkinter.html"&gt;Tkinter documentation.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Lets add a button that generates more labels!&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;addCats&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tk&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Label&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;MOAR CATS&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;    &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;button&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tk&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Button&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;CATS&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;addCats&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;button&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Woah! There is a lot going on here! &lt;code&gt;addCats&lt;/code&gt; generates more labels. When we create a Button widget, we need to give it a function that will be called when the button gets clicked. However, you can't pass it any elements. HIGHER ORDER FUNCTIONS TO THE RESCUE! Since we want to pass in the root always, we can create a lambda function that will return a function with root applied to it. We could also partial module as well:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;functools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;partial&lt;/span&gt;
+
+&lt;span class="n"&gt;addCats_root&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;addCats&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;button&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tk&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Button&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;CATS&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Okay, so we made quiet a mess here. I don't know about you, but this is what my GUI looks like:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/images/tk.png" style="width: 20%; height: 20%"/&gt;​&lt;/p&gt;
+&lt;p&gt;Lets add a button that quits the GUI and destroys the widget!&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;button&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tk&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Button&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;QUIT&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;destroy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;button&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now a QUIT button should appear, and when you press it, the window should close! Your root object is no longer available to play with though! You will need to create a new Tk object. &lt;/p&gt;
+&lt;p&gt;But it was fun just playing around the Tkinter module in the interpreter. Whenever I got into a weird state, I would just destroy the root and start over.&lt;/p&gt;
+&lt;h2&gt;Unit testing in Tkinter&lt;/h2&gt;
+&lt;p&gt;I learned the hard way that once you close the window or call &lt;code&gt;root.destory()&lt;/code&gt;, that object is gone forever and you need to instantiate the object again to get a new one.&lt;/p&gt;
+&lt;p&gt;I am going through how the Python project runs their unit tests, and it is pretty impressive. They have test modules in Lib/test folder. For Tkinter, the test modules are test_ttk_guionly.py, test_ttk_textonly.py and test_tk.py. However, these modules call other test modules within the Lib/tkinter/test module. These modules test individual GUI objects by creating them and checking the hard values in the widget. &lt;/p&gt;
+&lt;p&gt;However, &lt;a href="http://bugs.python.org/issue17496"&gt;not all the Tkinter tests run successfully on Mac OS X&lt;/a&gt;. So I have to run them on Ubuntu, which is a bummer. &lt;/p&gt;
+&lt;p&gt;Anyway, I am still a beginner to Tkinter and Turtle modules. Turtle seems like a awesome module to play with. I will be telling you more about that next time!&lt;/p&gt;</summary><category term="opw"></category><category term="python"></category><category term="tkinter"></category></entry><entry><title>Path Module</title><link href="http://litacho.github.io/path-and-import.html" rel="alternate"></link><updated>2014-04-13T00:00:00-04:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-04-13:path-and-import.html</id><summary type="html">&lt;p&gt;In order to take a break from making Flask apps, my Bittorrent client, messing with various databases, and reading HTTP protocol documentation, I wanted to write about Python, something I know.&lt;/p&gt;
 &lt;p&gt;While working at Dreamworks Animation, my favorite module was the "path" module. This is a 3rd party module dealing with file paths. It makes paths as first class objects, allowing you to do some common operations on them.  We had our own version at Dreamworks, which hooks into our proprietary software. But path.py is still useful by itself. This is way better than using os.path. Hopefully, after this blog post, you will never use os.path... ever.&lt;/p&gt;
 &lt;p&gt;You might think module sounds boring. I mean, file directories... really? Well, when you are working with hundreds of thousands of images (30 frames in a second, 90 minutes in an animated film, so we are talking 30 x 60 x 90=162,000 images for an entire movie, not including composite layers that make up one image), this module is a godsend. We were constantly renaming, deleting, copying and moving files all over the place. Most of the marketing tasks were frankensteining some frames together in order to meet deadlines. &lt;/p&gt;
 &lt;p&gt;But you can use this module in everyday tasks! Like cleaning up unnecessary data or making a script to rename some music files in Python! Here are some examples of using this module! If you are following along, please start in an empty directory.&lt;/p&gt;
@@ -431,183 +498,4 @@ my computer. I can't believe I wrote software to do that!   &lt;/p&gt;
 School! This couldn't have happened without your enthusiasm for writing
 Bittorrent Clients!  &lt;/p&gt;
 &lt;p&gt;Even though this project was great, I want to try making a full stack
-web app. Lets see how that goes!&lt;/p&gt;</summary><category term="bittorrent"></category><category term="hacker school"></category></entry><entry><title>Meeting with Mel</title><link href="http://litacho.github.io/meeting-with-mel.html" rel="alternate"></link><updated>2014-02-20T03:20:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-02-20:meeting-with-mel.html</id><summary type="html">&lt;p&gt;I met with Mel Chua today, 1-on-1, in order to get a better idea of how
-I can make the most of my time at Hacker School. She mentioned intrinsic
-motivation (motivation from within) versus extrinsic motivation
-(motivation from the outside) in her what-kind-of-learner-are-you
-workshop. Basically, you learn better if your motivation about a topic
-comes intrinsically.   &lt;/p&gt;
-&lt;p&gt;However, I've been having a hard time figuring out what topics motivates
-me intrinsically. I feel like I've been choosing topics, workshops, and
-projects that would be good for my career as a software developer versus
-me being like, "oh WOW! This topic is SOOOoo fascinating! Let's spend
-HOURS coding it up."   &lt;/p&gt;
-&lt;p&gt;Talking with Mel, she and I have similar back stories. We both grew up
-with strict Asian parents and were wired to do well in a structured
-educational environment. We only had three real career options due to
-family pressures (doctor, lawyer, engineer -- although Mel also had the
-option of business school). We've both been good at listening to other
-peoples' voices and mold ourselves to follow the rules of society,
-whether it be academia or a big corporation.  &lt;/p&gt;
-&lt;p&gt;Now coming to Hacker School, I was completely lost on what to do. There
-was no one to tell me the guidelines. I didn't have a project that I was
-passionate about walking in. Talking with Mel, I realized I've forgotten
-how to listen to my inner voice. I am very good at listening to everyone
-else, pieces their words together, and regurgitating it back. That is
-why when I come to a new problem or topic I have no clue about, I get so
-nervous, since I have no one else's voice to piece together. If someone
-challenges my answer, I am quick to change it rather than listening to
-my gut. Even my opinions about movies or restaurants are influenced by
-friends or Yelp.   &lt;/p&gt;
-&lt;p&gt;Mel recommended that I need to practice silence. Meditation is another
-word for it, but basically I need to spend some time not cognitively
-thinking and emptying my mind in order to hear my inner voice again. The
-book “Women’s Ways of Knowing” has a section that describes the journey
-through silence that one has to pass through to move from “parroting
-others” to finding your authentic voice:  &lt;/p&gt;
-&lt;p&gt;“To most women, the first steps on this journey do not feel like
-progress. The voice diminishes in volume; it lacks authority. These
-women lack even the derived authority of those who, having faith in
-received knowledge, can assume as they parrot their elders that they
-speak the truth. Lacking, also, the inner authority of the subjectivist,
-they cannot cheerfully blurt out the first idea that springs to mind.
-The inner voice turns critical; it tells them their ideas may be stupid.
-Women at this position think before they speak; and, because their ideas
-must measure up to certain objective standards, they speak in measured
-tones. Often, they do not speak at all. But this is not a passive
-silence; on the other side of this silence, reason is stirring.” (page
-93)  &lt;/p&gt;
-&lt;p&gt;It sounded weird and VERY uncomfortable. Based on her workshop, I found
-that I was an active learner, where I need to continuously talk to
-process information. In conversations, I need to fill the silence with
-noise, so I usually end up rambling in order to fill the silence.   &lt;/p&gt;
-&lt;p&gt;She realized this was going to be hard, but asked me to try it for a
-week. Here is the schedule she suggested for me:  &lt;/p&gt;
-&lt;p&gt;Morning:  Take up to 15 minutes to write 3 pages of whatever it is on
-your mind. Basically do a brain dump to get all the clutter out. This
-way, your brain is prepared for the silence. This is a practice called
-“morning pages” and comes from the book “The Artist’s Way.”  &lt;/p&gt;
-&lt;p&gt;Mid-Afternoon: 20 minutes of silence. If that is too hard, start with 5
-minutes and work your way up. Also, this doesn't mean 20 minutes of no
-talking and thinking about programming problems or what to do tomorrow.
-Just empty your mind and make peace with the silence.  &lt;/p&gt;
-&lt;p&gt;Evening: Examen. In order to become more sensitive to my own voice, I
-have to practice listening to my “interior movements,” which are sort of
-like emotions/feelings. These steps are adapted from spiritual exercises
-composed by Ignatius of Loyola:  &lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Feelings review! Take 10 minutes to reflect on any feelings you had
-today and review them. Example: I was scared when this person asked to
-pair programming with me!   &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Analysis! Try to think why these feelings came up or what situation
-caused this feeling. See if you had this feeling before in the past and
-if there are any patterns. Example: I am not comfortable pair
-programming in a language I don't know. This happened back in college
-when I was paired up with a partner who wanted to use an unfamiliar
-language!  &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Next Steps: Identify future steps for tomorrow about how you can
-discover your inner voice! If you have a feeling that you are not sure
-how identify, try to recreate it in order to learn how to make that
-feeling happen. If you want to overcome a fear, try to get
-uncomfortable. Remember feelings that truly get you excited or happy,
-and recreate those moments. If you have feelings you hate or piss you
-off, log those too and see if you can find any patterns!  &lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I am keeping an open mind and giving this a try! I hope I can find my
-inner voice by practicing this everyday and find what I am truly
-passionate about!  &lt;/p&gt;</summary><category term="Uncategorized"></category></entry><entry><title>New York and First Day at Hacker School</title><link href="http://litacho.github.io/new-york-and-first-day-at-hacker-school.html" rel="alternate"></link><updated>2014-02-11T19:11:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-02-11:new-york-and-first-day-at-hacker-school.html</id><summary type="html">&lt;p&gt;If you haven't heard, I decided to quit my cushy job at Dreamworks
-Animation and move to New York. It seems kind of crazy, but I spent all
-of Christmas break and January deciding if I really want to do it. I've
-been living in the Bay Area a long time, and I felt like I needed a
-change.  &lt;/p&gt;
-&lt;p&gt;I decided to attend Hacker School. I get to live in New York for three
-months and work on whatever programming projects I want with like-minded
-people.  &lt;/p&gt;
-&lt;p&gt;Since I didn't post when I arrived, this post will be in two parts. &lt;/p&gt;
-&lt;h2 class="wsite-content-title" style="text-align: left;"&gt;Part 1: Hanging out with Ben&lt;/h2&gt;
-&lt;p&gt;Ben was my TA at Berkeley way back in 2008 and my project partner in the
-same semester. After he graduated, we totally lost touch. But I remember
-he moved to New York for work. Five years later, I decide I want to go
-to Hacker School, and email him out of the blue to see if I can crash at
-his place.  &lt;/p&gt;
-&lt;p&gt;It was shocking how welcoming he was after all these years. It was like
-he never left, and we just left off where we started. His roommate is
-super into indie movies, particularly difficult movies to watch like
-movies from David Lynch and Haneke. It was quite stimulating to analyze
-movies in an intellectual level.&lt;/p&gt;
-&lt;h2 class="wsite-content-title" style="text-align: left;"&gt;Part 2: Hacker School&lt;/h2&gt;
-&lt;p&gt;During my first day at Hacker School, I definitely felt lost. They
-basically give you some ground rules (which basically sums up to "don't
-be a jerk") and let you do whatever you want. No instructions. No
-direction.   &lt;/p&gt;
-&lt;p&gt;I really am not that great without direction, so I felt really lost my
-first day. But I decided to choose something and get started. I know I
-want to learn web programming. So I decided to try out Flask, since I am
-comfortable with Python.  &lt;/p&gt;
-&lt;p&gt;I was able to make a microblog pretty quickly using this tutorial: &lt;br /&gt;
-&lt;a href="http://flask.pocoo.org/docs/tutorial/"&gt;http://flask.pocoo.org/docs/tutorial/&lt;/a&gt;  &lt;/p&gt;
-&lt;p&gt;I want to extend this by being able to add images and dates. I also
-found this tutorial that seems really useful: &lt;br /&gt;
-&lt;a href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world"&gt;The Flask Mega Tutorial&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Next half of the day, I moved onto learning WebGL. I found this website
-which translates &lt;a href="http://nehe.gamedev.net/"&gt;NeHe Tutorials&lt;/a&gt; (ahhh the memories) to
-WebGL: &lt;a href="http://learningwebgl.com/blog/?page\_id=1217"&gt;Learning WebGL&lt;/a&gt;  &lt;/p&gt;
-&lt;p&gt;I did the first lesson and started to remember how much OpenGL sucks. By
-sucks, I mean how tedious it is. So I copped out and decided to use
-Three.js, which is a lot simpler! I was able to get something running
-with 10 lines of code vs 200.   &lt;/p&gt;
-&lt;p&gt;Going to continue learning Python and hopefully do some pair
-programming!!! I need to work up the courage to do pair programming.&lt;/p&gt;</summary><category term="new york"></category><category term="webGL"></category><category term="hacker school"></category><category term="flask"></category></entry><entry><title>Hong Kong Style Egg Pudding</title><link href="http://litacho.github.io/hong-kong-style-egg-pudding.html" rel="alternate"></link><updated>2013-12-31T06:57:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2013-12-31:hong-kong-style-egg-pudding.html</id><summary type="html">&lt;p&gt;My boyfriend and I had egg pudding for the very first time while
-traveling in Hong Kong last year. We ate it almost every day at the
-Australian Milk Company while in Hong Kong.  &lt;/p&gt;
-&lt;p&gt;When we got back, we soon discovered that San Mateo had a restaurant
-that had HK-style egg pudding!  It wasn't consistent. Sometimes, it
-would be overcooked. However, the establishment did fulfill our cravings
-for the delicious dessert.  &lt;/p&gt;
-&lt;p&gt;We ate at this place a lot. Like... a lot! However, each pudding was
-$5! We ended up spending around $15-20 between the two of us, which
-was painful on the wallet.  &lt;/p&gt;
-&lt;p&gt;I decided this was getting ridiculous and to try to make this dish
-myself. However, I was being pretty cheap and picky about buying
-ramekins needed to make this dessert. It took me a year before my
-boyfriend found the cheapest ramekins at Daiso for $1.50!   &lt;/p&gt;
-&lt;p&gt;I ended up using this recipe as a base: &lt;a href="http://www.tastehongkong.com/recipes/chinese-egg-pudding-my-organic-dessert/"&gt;Hong Kong Pudding Recipe&lt;/a&gt;  &lt;/p&gt;
-&lt;p&gt;It turned out to be a success!!! I am super excited. Now, I will NEVER
-pay $5+tax+tip for egg pudding EVER AGAIN!&lt;/p&gt;
-&lt;h2 style="text-align: left;"&gt;Lita's Recipe for Hong Kong Style Egg Pudding&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Ingredients&lt;/strong&gt;  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Two Eggs&lt;/li&gt;
-&lt;li&gt;1 cup of Milk &lt;/li&gt;
-&lt;li&gt;3 tablespoons of sugar (I used brown sugar)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Tools&lt;/strong&gt;  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Sieve  &lt;/li&gt;
-&lt;li&gt;2 individualize-size ramekins &lt;/li&gt;
-&lt;li&gt;Steamer&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Combine the milk and sugar into a pot and heat the mixture till the
-sugar is fully dissolved. I used medium heat. Be careful not to over
-heat or the milk will curdle.     &lt;/p&gt;
-&lt;p&gt;In another bowl, beat the two eggs. Temper the egg with the milk mixture
-you just made. (Basically add small doses of the milk mixture to the
-eggs while beating so you don't end up cooking the eggs.) You can also
-let the milk mixture cool and then add it to the eggs, but I was
-impatient.   &lt;/p&gt;
-&lt;p&gt;Strain the mixture through the sieve to get rid of the foams.   &lt;/p&gt;
-&lt;p&gt;Place the mixture evenly in the ramekins.  &lt;/p&gt;
-&lt;p&gt;Place the ramekins in the steamer.  &lt;/p&gt;
-&lt;p&gt;Steam the mixture for 15-20 minutes at low heat. You kind of need to
-experiment here, since the time is dependent on your stove. I basically
-jiggled the ramekins till the mixture had a jelly-like consistency.   &lt;/p&gt;
-&lt;p&gt;Here are some pictures of the results! Next, I am going to try making a
-Paleo-ish version with almond milk and honey.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Pudding" src="/images/2728904.jpg" /&gt; &lt;img alt="Pudding" src="/images/5567780.jpg" /&gt;
-&lt;img alt="Pudding" src="/images/5645957.jpg" /&gt;&lt;/p&gt;</summary><category term="cooking"></category><category term="desserts"></category></entry></feed>
+web app. Lets see how that goes!&lt;/p&gt;</summary><category term="bittorrent"></category><category term="hacker school"></category></entry></feed>

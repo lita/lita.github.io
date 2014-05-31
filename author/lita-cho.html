@@ -33,23 +33,132 @@
                 </div>
                 <h1><a href="http://litacho.github.io/index.html">Lita Cho </a></h1>
 
-                <nav><ul>
+                <nav><ul class="main">
                     <li ><a href="http://litacho.github.io/index.html">Home</a>|</li>
 
                 <!--Displays Pages on Menu -->
                     <li ><a href="http://litacho.github.io/pages/about.html">About</a>|</li> 
                     <li ><a href="http://litacho.github.io/pages/projects.html">Projects</a>|</li> 
-                
+
+                <!--               
+                <li class="dropdown">
+                    Blog
+                    <ul class="dropdown">
+                        <li class="test"><a href="http://litacho.github.io/category/blog.html">Blog</a></li>
+                        <li class="test"><a href="http://litacho.github.io/category/personal.html">personal</a></li>
+                        <li class="test"><a href="http://litacho.github.io/category/programming.html">programming</a></li>
+                    </ul>
+                    </li>
+                -->
+
                 <!--Displays Categories on Menu -->
+                 <li ><a href="http://litacho.github.io/category/blog.html">Blog</a></li> 
+
+                 <!--
                         <li ><a href="http://litacho.github.io/category/blog.html">Blog</a></li>
-                </ul></nav>
+                        <li ><a href="http://litacho.github.io/category/personal.html">personal</a></li>
+                        <li ><a href="http://litacho.github.io/category/programming.html">programming</a></li>
+                </ul> 
+                -->
+                </nav>
         </header><!-- /#banner -->
         
         
 
             <aside id="body" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://litacho.github.io/path-and-import.html">Path Module</a></h1> 
+                    <h1 class="entry-title"><a href="http://litacho.github.io/opw-intro.html">OPW and Tkinter!</a></h1> 
+<footer class="post-info">
+        <abbr class="published" title="2014-05-29T16:18:00">
+                Thu 29 May 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://litacho.github.io/author/lita-cho.html">Lita Cho</a>
+        </address>
+<p>In <a href="http://litacho.github.io/category/blog.html">Blog</a>. </p>
+<p>tags: <a href="http://litacho.github.io/tag/opw.html">opw</a><a href="http://litacho.github.io/tag/python.html">python</a><a href="http://litacho.github.io/tag/tkinter.html">tkinter</a></p></footer><!-- /.post-info --><p>After Hacker School, I got accepted to the GNOME: Outreach Program for Women (OPW), where I get to spend a summer working on CPython with none other than <a href="https://twitter.com/jessicamckellar">Jessica Mckellar</a>. For the next three months, I'm working on making GUIs better in Python. </p>
+<p>It has been a week and half already, and so far I am getting my hands dirty by fixing bugs and code reviewing other people's patches. </p>
+<p>For this blog post, I thought I'd talk about Tkinter, the GUI module in Python, and how to start using it! </p>
+<p>Note: All the following examples will only work with Python 3. I'm moving on! GOOD-BYE PYTHON 2.7!!</p>
+<p>In GUI programming, I like to think of the GUI as a tree or a graph. The root is your main GUI window, and within it contains different elements (Labels, Buttons, Images, TextBoxes, etc. Also known as Widgets), which are your children to your tree.</p>
+<p>Let's start with Hello World. Python is cool because I can interactively mess with a module using the interpreter.</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">tkinter</span> <span class="kn">as</span> <span class="nn">tk</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Notice that a window pops up! Yay, that is your root GUI window with nothing in it! Don't close this window! This will destroy the root GUI object, and you won't be able to get it back! If you did, no big deal, just instantiate another one.</p>
+<p>Let's add a label with the word, "Hello World!"</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">w</span>  <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Wait, what? Nothing has happened... what is going on here? Where is my label?</p>
+<p>Lets briefly go over Geometry Managers! Geometry Managers manage where widgets should go within their parent. They determine the placement of the widgets they are in charge of. There are different kinds of Geometry Managers within Tkinter. However, the most popular one is called "The Packer". The Packer sets the size of a widget by determining the size of it's children first and packing it closely together. You can put frames and padding to get the look you desire, but ultimately, your window is going to packed to the minimal size by default.</p>
+<p>We haven't specified what type of geometry manager to use. Let's go ahead and use "The Packer" as our geometry manager! It is super easy! All we need to do is call the <code>pack()</code> method.</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">w</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Yes! Our widget shows up! We can pass in settings to <code>pack</code> method. These settings adjust where the widget is going to appear within its container, and how it will behave when the main application window is resized. Lets try put another Label.</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>  <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+</pre></div>
+
+
+<p>By default, the packer sets the widgets on top of each other as the window expands. However, we can change this!</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>If you didn't expand your window, then the text didn't change. However, if you expand the window, one of the labels stays on the top, while the other goes toward to the left! There are other settings, which you can find in the <a href="https://docs.python.org/3.4/library/tkinter.html">Tkinter documentation.</a></p>
+<p>Lets add a button that generates more labels!</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">addCats</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+<span class="o">...</span>    <span class="n">x</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">&quot;MOAR CATS&quot;</span><span class="p">)</span>
+<span class="o">...</span>    <span class="n">x</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">&quot;CATS&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="n">addCats</span><span class="p">(</span><span class="n">root</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">button</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Woah! There is a lot going on here! <code>addCats</code> generates more labels. When we create a Button widget, we need to give it a function that will be called when the button gets clicked. However, you can't pass it any elements. HIGHER ORDER FUNCTIONS TO THE RESCUE! Since we want to pass in the root always, we can create a lambda function that will return a function with root applied to it. We could also partial module as well:</p>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<span class="n">addCats_root</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">addCats</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span>
+<span class="n">button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">&quot;CATS&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">partial</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Okay, so we made quiet a mess here. I don't know about you, but this is what my GUI looks like:</p>
+<p><img src="/images/tk.png" style="width: 20%; height: 20%"/>​</p>
+<p>Lets add a button that quits the GUI and destroys the widget!</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">&quot;QUIT&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">root</span><span class="o">.</span><span class="n">destroy</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">button</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Now a QUIT button should appear, and when you press it, the window should close! Your root object is no longer available to play with though! You will need to create a new Tk object. </p>
+<p>But it was fun just playing around the Tkinter module in the interpreter. Whenever I got into a weird state, I would just destroy the root and start over.</p>
+<h2>Unit testing in Tkinter</h2>
+<p>I learned the hard way that once you close the window or call <code>root.destory()</code>, that object is gone forever and you need to instantiate the object again to get a new one.</p>
+<p>I am going through how the Python project runs their unit tests, and it is pretty impressive. They have test modules in Lib/test folder. For Tkinter, the test modules are test_ttk_guionly.py, test_ttk_textonly.py and test_tk.py. However, these modules call other test modules within the Lib/tkinter/test module. These modules test individual GUI objects by creating them and checking the hard values in the widget. </p>
+<p>However, <a href="http://bugs.python.org/issue17496">not all the Tkinter tests run successfully on Mac OS X</a>. So I have to run them on Ubuntu, which is a bummer. </p>
+<p>Anyway, I am still a beginner to Tkinter and Turtle modules. Turtle seems like a awesome module to play with. I will be telling you more about that next time!</p><p>There are <a href="http://litacho.github.io/opw-intro.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+        
+
+ 
+            <li><article class="hentry">    
+                <header>
+                        <h1><a href="http://litacho.github.io/path-and-import.html" rel="bookmark" title="Permalink to Path Module">Path Module</a></h1>
+                </header>
+                
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-04-13T00:00:00">
                 Sun 13 April 2014
@@ -59,162 +168,13 @@
                 By <a class="url fn" href="http://litacho.github.io/author/lita-cho.html">Lita Cho</a>
         </address>
 <p>In <a href="http://litacho.github.io/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://litacho.github.io/tag/python.html">python</a><a href="http://litacho.github.io/tag/hacker-school.html">hacker school</a><a href="http://litacho.github.io/tag/path-module.html">path module</a><a href="http://litacho.github.io/tag/previous-life.html">previous life</a></p></footer><!-- /.post-info --><p>In order to take a break from making Flask apps, my Bittorrent client, messing with various databases, and reading HTTP protocol documentation, I wanted to write about Python, something I know.</p>
-<p>While working at Dreamworks Animation, my favorite module was the "path" module. This is a 3rd party module dealing with file paths. It makes paths as first class objects, allowing you to do some common operations on them.  We had our own version at Dreamworks, which hooks into our proprietary software. But path.py is still useful by itself. This is way better than using os.path. Hopefully, after this blog post, you will never use os.path... ever.</p>
-<p>You might think module sounds boring. I mean, file directories... really? Well, when you are working with hundreds of thousands of images (30 frames in a second, 90 minutes in an animated film, so we are talking 30 x 60 x 90=162,000 images for an entire movie, not including composite layers that make up one image), this module is a godsend. We were constantly renaming, deleting, copying and moving files all over the place. Most of the marketing tasks were frankensteining some frames together in order to meet deadlines. </p>
-<p>But you can use this module in everyday tasks! Like cleaning up unnecessary data or making a script to rename some music files in Python! Here are some examples of using this module! If you are following along, please start in an empty directory.</p>
-<p>First lets install this module.</p>
-<div class="codehilite"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">path</span><span class="p">.</span><span class="n">py</span>
-</pre></div>
-
-
-<p>Okay, time to start playing with it!</p>
-<div class="codehilite"><pre><span class="n">from</span> <span class="n">path</span> <span class="n">import</span> <span class="n">path</span>
-
-<span class="n">root</span> <span class="o">=</span> <span class="n">path</span><span class="p">(</span><span class="sc">&#39;.&#39;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>This will create a path object that is pointed to your current directory! One of my favorite features is how easy and readable it is to append directories to the path. For example, you can do this!</p>
-<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]</span><span class="o">:</span> <span class="n">t</span> <span class="o">=</span> <span class="n">root</span> <span class="o">/</span> <span class="s">&quot;test&quot;</span> <span class="o">/</span> <span class="s">&quot;a&quot;</span> <span class="o">/</span> <span class="s">&quot;long&quot;</span> <span class="o">/</span> <span class="s">&quot;directory&quot;</span> <span class="o">/</span> <span class="s">&quot;tree&quot;</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]</span><span class="o">:</span> <span class="n">print</span> <span class="n">t</span>
-<span class="n">test</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="kt">long</span><span class="o">/</span><span class="n">directory</span><span class="o">/</span><span class="n">tree</span> 
-</pre></div>
-
-
-<p>How awesome is that?? You can even ask if the directory exists or not. </p>
-<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]</span><span class="o">:</span> <span class="n">t</span><span class="p">.</span><span class="n">exists</span><span class="p">()</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span><span class="o">:</span> <span class="n">False</span>
-</pre></div>
-
-
-<p>Lets go ahead and make this directory!</p>
-<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]</span><span class="o">:</span> <span class="n">t</span><span class="p">.</span><span class="n">makedirs</span><span class="p">()</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]</span><span class="o">:</span> <span class="n">t</span><span class="p">.</span><span class="n">exists</span><span class="p">()</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">25</span><span class="p">]</span><span class="o">:</span> <span class="n">True</span>
-</pre></div>
-
-
-<p>How easy was that?! You can also give it permissions with the <code>mode</code> flag! By default, permissions is set to 511.</p>
-<p>Let's make a lot of directories!</p>
-<div class="codehilite"><pre><span class="n">import</span> <span class="n">random</span>
-
-<span class="n">def</span> <span class="n">make_fake_directories</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">:</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="n">root</span> <span class="o">/</span> <span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span><span class="o">:</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">/</span> <span class="n">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-        <span class="n">s</span><span class="p">.</span><span class="n">makedirs</span><span class="p">()</span>
-
-<span class="n">make_fake_directories</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-</pre></div>
-
-
-<p>This function creates 10 directories with random directory depth, within a range from 0 to 10. Lets see if this worked</p>
-<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]</span><span class="o">:</span> <span class="n">root</span><span class="p">.</span><span class="n">dirs</span><span class="p">()</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">26</span><span class="p">]</span><span class="o">:</span> 
-<span class="p">[</span><span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./0&quot;</span><span class="p">),</span>
- <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./1&quot;</span><span class="p">),</span>
- <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./2&quot;</span><span class="p">),</span>
- <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./3&quot;</span><span class="p">),</span>
- <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./4&quot;</span><span class="p">),</span>
- <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./5&quot;</span><span class="p">),</span>
- <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./6&quot;</span><span class="p">),</span>
- <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./7&quot;</span><span class="p">),</span>
- <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./8&quot;</span><span class="p">),</span>
- <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./9&quot;</span><span class="p">),</span>
- <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./env&quot;</span><span class="p">),</span>
- <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./plugins&quot;</span><span class="p">),</span>
- <span class="n">path</span><span class="p">(</span><span class="n">u</span><span class="s">&quot;./test&quot;</span><span class="p">)]</span>
-</pre></div>
-
-
-<p>Lets create a file at the end of directory depth!</p>
-<div class="codehilite"><pre><span class="k">for</span> <span class="n">dir</span> <span class="n">in</span> <span class="n">root</span><span class="p">.</span><span class="n">walkdirs</span><span class="p">()</span><span class="o">:</span>
-    <span class="k">if</span> <span class="n">not</span> <span class="n">dir</span><span class="p">.</span><span class="n">dirs</span><span class="p">()</span><span class="o">:</span>
-        <span class="n">file</span> <span class="o">=</span>  <span class="n">dir</span> <span class="o">/</span> <span class="s">&quot;myfile&quot;</span>
-        <span class="n">file</span><span class="p">.</span><span class="n">touch</span><span class="p">()</span>
-</pre></div>
-
-
-<p><code>walkdirs</code> returns a generator that iterates through your directory structure until you've looked at every folder. It is basically doing in-order traversal. </p>
-<p>We can use <code>walkfiles</code> to see if we created the necessary files!</p>
-<div class="codehilite"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">117</span><span class="p">]</span><span class="o">:</span> <span class="k">for</span> <span class="n">files</span> <span class="n">in</span> <span class="n">root</span><span class="p">.</span><span class="n">walkfiles</span><span class="p">()</span><span class="o">:</span>
-   <span class="p">.....</span><span class="o">:</span>     <span class="n">print</span> <span class="n">files</span>
-   <span class="p">.....</span><span class="o">:</span>     
-<span class="p">.</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="n">myfile</span>
-<span class="p">.</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">6</span><span class="o">/</span><span class="mi">7</span><span class="o">/</span><span class="n">myfile</span>
-<span class="p">.</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="n">myfile</span>
-<span class="p">.</span><span class="o">/</span><span class="mi">6</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">myfile</span>
-<span class="p">.</span><span class="o">/</span><span class="mi">7</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">myfile</span>
-<span class="p">.</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">6</span><span class="o">/</span><span class="n">myfile</span>
-<span class="p">.</span><span class="o">/</span><span class="mi">9</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">6</span><span class="o">/</span><span class="mi">7</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="n">myfile</span>
-<span class="p">.</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="n">myfile</span>
-<span class="p">.</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">myfile</span>
-<span class="p">.</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">6</span><span class="o">/</span><span class="mi">7</span><span class="o">/</span><span class="n">myfile</span>
-</pre></div>
-
-
-<p>Okay, lets try to rename my numbered directories into letters! Just because we can. </p>
-<div class="codehilite"><pre><span class="n">def</span> <span class="n">renameDirs</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">for</span> <span class="n">dir</span> <span class="n">in</span> <span class="n">root</span><span class="p">.</span><span class="n">dirs</span><span class="p">()</span><span class="o">:</span>
-        <span class="k">if</span> <span class="n">dir</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">isdigit</span><span class="p">()</span><span class="o">:</span>
-            <span class="k">if</span> <span class="n">dir</span><span class="p">.</span><span class="n">dirs</span><span class="p">()</span><span class="o">:</span>
-                <span class="n">renameDirs</span><span class="p">(</span><span class="n">dir</span><span class="p">)</span>
-            <span class="n">parent</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">dir</span><span class="p">.</span><span class="n">splitpath</span><span class="p">()</span>
-            <span class="n">dir</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">parent</span> <span class="o">/</span> <span class="n">chr</span><span class="p">(</span><span class="n">ord</span><span class="p">(</span><span class="sc">&#39;a&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="kt">int</span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">name</span><span class="p">)))</span>
-
-<span class="n">renameDirs</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-</pre></div>
-
-
-<p>Woah! A lot of stuff going on here! I wrote a lot of these little recursive functions a lot, but you can do the same thing as <code>walkdirs</code>. Basically, I loop over all the directories in the current directory, and check to see if they have any directories. If so, I recurse. When the function returns, I rename the directory to the ASCII equivalent by using <code>ord</code>. The <code>rename</code> path is a little tricky, as it needs the full path from where your Python module is running from. That is why I call <code>splitpath</code> in order to get the parent directory. Now, we have folders like this!</p>
-<div class="codehilite"><pre><span class="n">a</span><span class="o">/</span>       <span class="n">b</span><span class="o">/</span>       <span class="n">c</span><span class="o">/</span>       <span class="n">d</span><span class="o">/</span>       <span class="n">e</span><span class="o">/</span>       <span class="n">f</span><span class="o">/</span>       <span class="n">g</span><span class="o">/</span>       <span class="n">h</span><span class="o">/</span>       <span class="n">i</span><span class="o">/</span>       <span class="n">j</span><span class="o">/</span>  
-</pre></div>
-
-
-<p>Now we have a directory structure like this! (Note: I shorten the results for brevity.)</p>
-<div class="codehilite"><pre><span class="p">.</span><span class="o">/</span><span class="n">a</span>
-<span class="p">.</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">a</span>
-<span class="p">.</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span>
-<span class="p">.</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span>
-<span class="p">.</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span>
-<span class="p">.</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">e</span>
-<span class="p">.</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="n">f</span>
-<span class="p">.</span><span class="o">/</span><span class="n">b</span>
-<span class="p">.</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">a</span>
-<span class="p">.</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span>
-<span class="p">.</span><span class="o">/</span><span class="n">c</span>
-<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span>
-<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span>
-<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span>
-<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span>
-<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">e</span>
-<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="n">f</span>
-<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="n">f</span><span class="o">/</span><span class="n">g</span>
-<span class="p">.</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="n">f</span><span class="o">/</span><span class="n">g</span><span class="o">/</span><span class="n">h</span>
-<span class="p">.</span><span class="o">/</span><span class="n">d</span>
-<span class="p">.</span><span class="o">/</span><span class="n">e</span>
-<span class="p">.</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="n">a</span>
-<span class="p">...</span>
-</pre></div>
-
-
-<p>So now that we are done testing, time to delete these useless directories! </p>
-<div class="codehilite"><pre><span class="k">for</span> <span class="n">dir</span> <span class="n">in</span> <span class="n">root</span><span class="p">.</span><span class="n">dirs</span><span class="p">()</span><span class="o">:</span>
-    <span class="n">dir</span><span class="p">.</span><span class="n">rmtree</span><span class="p">()</span>
-</pre></div>
-
-
-<p>This will delete the entire directory tree of the current folder. How cool is that? Don't run this if you have any import files or directories in your root folder!!!</p>
-<p>Now that you know the basics, check out this blog about how to write a script a clean-up script for your website!</p>
-<p><a href="http://freepythontips.wordpress.com/2014/01/23/python-101-writing-a-cleanup-script/">Python 101: Writing a cleanup script</a></p>
-<p>Happy scripting!</p><p>There are <a href="http://litacho.github.io/path-and-import.html#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>tags: <a href="http://litacho.github.io/tag/python.html">python</a><a href="http://litacho.github.io/tag/hacker-school.html">hacker school</a><a href="http://litacho.github.io/tag/path-module.html">path module</a><a href="http://litacho.github.io/tag/previous-life.html">previous life</a></p></footer><!-- /.post-info -->                    <div class="summery">
+                        <p>In order to take a break from making Flask apps, my Bittorrent client, messing with various databases, and reading HTTP protocol documentation, I wanted to write about Python, something I know.</p>
+<p>While working at Dreamworks Animation, my favorite module was the "path" module. This is a 3rd party module dealing ...</p>
+                        <a class="readmore" href="http://litacho.github.io/path-and-import.html">read more</a>
+<p>There are <a href="http://litacho.github.io/path-and-import.html#disqus_thread">comments</a>.</p>                    </div>
+                </div><!-- /.entry-content -->
+            </article></li>
         
 
  
@@ -363,8 +323,8 @@ School though. There is ...</p>
         <address class="vcard author">
                 By <a class="url fn" href="http://litacho.github.io/author/lita-cho.html">Lita Cho</a>
         </address>
-<p>In <a href="http://litacho.github.io/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://litacho.github.io/tag/uncategorized.html">Uncategorized</a></p></footer><!-- /.post-info -->                    <div class="summery">
+<p>In <a href="http://litacho.github.io/category/personal.html">personal</a>. </p>
+<p>tags: <a href="http://litacho.github.io/tag/life.html">life</a><a href="http://litacho.github.io/tag/career.html">career</a></p></footer><!-- /.post-info -->                    <div class="summery">
                         <p>I met with Mel Chua today, 1-on-1, in order to get a better idea of how
 I can make the most of my time at Hacker School. She mentioned intrinsic
 motivation (motivation from within) versus extrinsic motivation
@@ -391,7 +351,7 @@ workshop. Basically, you learn better if ...</p>
         <address class="vcard author">
                 By <a class="url fn" href="http://litacho.github.io/author/lita-cho.html">Lita Cho</a>
         </address>
-<p>In <a href="http://litacho.github.io/category/blog.html">Blog</a>. </p>
+<p>In <a href="http://litacho.github.io/category/programming.html">programming</a>. </p>
 <p>tags: <a href="http://litacho.github.io/tag/new-york.html">new york</a><a href="http://litacho.github.io/tag/webgl.html">webGL</a><a href="http://litacho.github.io/tag/hacker-school.html">hacker school</a><a href="http://litacho.github.io/tag/flask.html">flask</a></p></footer><!-- /.post-info -->                    <div class="summery">
                         <p>If you haven't heard, I decided to quit my cushy job at Dreamworks
 Animation and move to New York. It seems kind of crazy, but I spent all
@@ -418,7 +378,7 @@ been living in the Bay Area ...</p>
         <address class="vcard author">
                 By <a class="url fn" href="http://litacho.github.io/author/lita-cho.html">Lita Cho</a>
         </address>
-<p>In <a href="http://litacho.github.io/category/blog.html">Blog</a>. </p>
+<p>In <a href="http://litacho.github.io/category/personal.html">personal</a>. </p>
 <p>tags: <a href="http://litacho.github.io/tag/cooking.html">cooking</a><a href="http://litacho.github.io/tag/desserts.html">desserts</a></p></footer><!-- /.post-info -->                    <div class="summery">
                         <p>My boyfriend and I had egg pudding for the very first time while
 traveling in Hong Kong last year. We ate it almost every day at the
