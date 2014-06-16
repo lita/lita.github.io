@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Lita Cho</title><link href="http://litacho.github.io/" rel="alternate"></link><link href="http://litacho.github.io/feeds/programming.atom.xml" rel="self"></link><id>http://litacho.github.io/</id><updated>2014-02-11T19:11:00-05:00</updated><entry><title>New York and First Day at Hacker School</title><link href="http://litacho.github.io/new-york-and-first-day-at-hacker-school.html" rel="alternate"></link><updated>2014-02-11T19:11:00-05:00</updated><author><name>Lita Cho</name></author><id>tag:litacho.github.io,2014-02-11:new-york-and-first-day-at-hacker-school.html</id><summary type="html">&lt;p&gt;If you haven't heard, I decided to quit my cushy job at Dreamworks
+Animation and move to New York. It seems kind of crazy, but I spent all
+of Christmas break and January deciding if I really want to do it. I've
+been living in the Bay Area a long time, and I felt like I needed a
+change.  &lt;/p&gt;
+&lt;p&gt;I decided to attend Hacker School. I get to live in New York for three
+months and work on whatever programming projects I want with like-minded
+people.  &lt;/p&gt;
+&lt;p&gt;Since I didn't post when I arrived, this post will be in two parts. &lt;/p&gt;
+&lt;h2 class="wsite-content-title" style="text-align: left;"&gt;Part 1: Hanging out with Ben&lt;/h2&gt;
+&lt;p&gt;Ben was my TA at Berkeley way back in 2008 and my project partner in the
+same semester. After he graduated, we totally lost touch. But I remember
+he moved to New York for work. Five years later, I decide I want to go
+to Hacker School, and email him out of the blue to see if I can crash at
+his place.  &lt;/p&gt;
+&lt;p&gt;It was shocking how welcoming he was after all these years. It was like
+he never left, and we just left off where we started. His roommate is
+super into indie movies, particularly difficult movies to watch like
+movies from David Lynch and Haneke. It was quite stimulating to analyze
+movies in an intellectual level.&lt;/p&gt;
+&lt;h2 class="wsite-content-title" style="text-align: left;"&gt;Part 2: Hacker School&lt;/h2&gt;
+&lt;p&gt;During my first day at Hacker School, I definitely felt lost. They
+basically give you some ground rules (which basically sums up to "don't
+be a jerk") and let you do whatever you want. No instructions. No
+direction.   &lt;/p&gt;
+&lt;p&gt;I really am not that great without direction, so I felt really lost my
+first day. But I decided to choose something and get started. I know I
+want to learn web programming. So I decided to try out Flask, since I am
+comfortable with Python.  &lt;/p&gt;
+&lt;p&gt;I was able to make a microblog pretty quickly using this tutorial: &lt;br /&gt;
+&lt;a href="http://flask.pocoo.org/docs/tutorial/"&gt;http://flask.pocoo.org/docs/tutorial/&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;I want to extend this by being able to add images and dates. I also
+found this tutorial that seems really useful: &lt;br /&gt;
+&lt;a href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world"&gt;The Flask Mega Tutorial&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Next half of the day, I moved onto learning WebGL. I found this website
+which translates &lt;a href="http://nehe.gamedev.net/"&gt;NeHe Tutorials&lt;/a&gt; (ahhh the memories) to
+WebGL: &lt;a href="http://learningwebgl.com/blog/?page\_id=1217"&gt;Learning WebGL&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;I did the first lesson and started to remember how much OpenGL sucks. By
+sucks, I mean how tedious it is. So I copped out and decided to use
+Three.js, which is a lot simpler! I was able to get something running
+with 10 lines of code vs 200.   &lt;/p&gt;
+&lt;p&gt;Going to continue learning Python and hopefully do some pair
+programming!!! I need to work up the courage to do pair programming.&lt;/p&gt;</summary><category term="new york"></category><category term="webGL"></category><category term="hacker school"></category><category term="flask"></category></entry></feed>
