@@ -116,6 +116,9 @@
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 <span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">patch</span>
 
+<span class="k">def</span> <span class="nf">lets_print_something</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Dude, I totally printed&quot;</span><span class="p">)</span>
+
 <span class="k">class</span> <span class="nc">TestPrintingMock</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
     <span class="nd">@patch</span><span class="p">(</span><span class="s">&#39;sys.stdout&#39;</span><span class="p">,</span> <span class="n">new_callable</span><span class="o">=</span><span class="n">StringIO</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">test_lets_print_something</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_stdout</span><span class="p">):</span>
