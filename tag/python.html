@@ -151,8 +151,8 @@
 <div class="codehilite"><pre><span class="k">class</span> <span class="nc">BaseServer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">str_to_func</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;LOGIN&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">login</span>
-                            <span class="s">&#39;SELECT&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">select</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">str_to_func</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;LOGIN&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">,</span>
+                            <span class="s">&#39;SELECT&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">select</span><span class="p">}</span>
 
     <span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="s">&quot;LOGIN&quot;</span><span class="p">)</span>
@@ -201,7 +201,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Command doesn&#39;t exist&quot;</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">CustomeServer</span><span class="p">(</span><span class="n">BaseServer</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">CustomServer</span><span class="p">(</span><span class="n">BaseServer</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">catz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="s">&quot;LOLCATZ&quot;</span><span class="p">)</span>
