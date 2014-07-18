@@ -78,11 +78,12 @@
         </address>
 <p>In <a href="http://lita.github.io/category/blog.html">Blog</a>. </p>
 <p>tags: <a href="http://lita.github.io/tag/opw.html">opw</a><a href="http://lita.github.io/tag/python.html">python</a><a href="http://lita.github.io/tag/tkinter.html">tkinter</a></p></footer><!-- /.post-info --><p>I was inspired by <a href="http://jvns.ca/blog/2014/06/13/asking-questions-is-a-superpower/">Julia Evan's blog</a> post about listing what she knows and what she doesn't know, and how asking questions is a super power! I try to be good about asking questions when I don't know something, but I feel like my questions are too vague. I really want to get better at boiling my question down!</p>
-<p>Thus, I thought I take some time to list out what I don't know, specifically about unit testing, since that is all I have been doing this week! I'm been tasked with writing unit tests for the entire turtle module! Can you believe there isn't a single unit test for this module at all, even though it is a standard library?! It also surprises me that turtle is all in one file, but that's a different story.</p>
+<p>Thus, I thought I take some time to list out what I don't know, specifically about unit testing, since that is all I have been doing this week! I'm been tasked with writing unit tests for the entire Turtle module! Can you believe there isn't a single unit test for this module at all, even though it is a standard library?! It also surprises me that the Turtle module is all in one file, but that's a different story.</p>
 <h2>What I don't know</h2>
 <h4>GUI Testing</h4>
 <p>I am still not 100% sure how GUIs are run through unit testing. In Tkinter, it looks like the widget is initialized and test just the internal variables within the widget class. I thought they would compare pixel by pixel, checking if the GUI is the same or not. That might be because I often did that at Dreamworks for testing the renderer.</p>
-<p>After talking with Ingrid, it looks like you can mock mouse-events by generating your own events through Tkinter. Then you pass in those events to Turtle to see how it reacts.</p>
+<p>After talking with Ingrid, it looks like you can mock mouse-events by generating your own events through Tkinter. Then you pass in those events to Turtle to see how it reacts. The <code>mock</code> module would be perfect for this! More on the <code>mock</code> module later!</p>
+<p>We are still learning as we develop our test coverage. In most cases, I create a GUI object and just test the internal state of Turtle rather than the Tkinter objects themselves. Everything seems to be coming together! As my tests run, all these GUI windows appear and disappear like I am being hacked. Soon, I can scare all my friends by running my tests on their computer! &gt;:D</p>
 <h4>The test.support module</h4>
 <p>CPython has an internal module called <code>test.support</code>, which holds all the utility functions for its unit tests. It has useful features, such as <code>use_resource</code>, where you can pass along command-line flags to your unit tests. We use this a lot for Turtle/Tkinter testing, as we need to check if GUIs are enabled in our environment. Thus rather than running the check for every module, an outside program that checks if GUIs are enabled and passes a 'gui' flag to all the other GUI unit tests if it passes. If not, then a warning appears, and the GUI unit tests don't run.</p>
 <p>However, the support module has a LOT of stuff in it that I don't know about. I really want to study it more so I know what is available to me when I write my tests.</p>
@@ -112,6 +113,9 @@
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 <span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">patch</span>
 
+<span class="k">def</span> <span class="nf">lets_print_something</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Dude, I totally printed&quot;</span><span class="p">)</span>
+
 <span class="k">class</span> <span class="nc">TestPrintingMock</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
     <span class="nd">@patch</span><span class="p">(</span><span class="s">&#39;sys.stdout&#39;</span><span class="p">,</span> <span class="n">new_callable</span><span class="o">=</span><span class="n">StringIO</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">test_lets_print_something</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock_stdout</span><span class="p">):</span>
@@ -125,7 +129,7 @@
 <p>I just barely scratched the surface. Your unit tests don't need to create side affects! <a href="http://www.toptal.com/python/an-introduction-to-mocking-in-python">Naftuli Tzvi Kay</a> has a great blog post about mocking in Python and how to test if your program called <code>rm</code> without generating any files!</p>
 <p><a href="https://docs.python.org/3.5/library/unittest.mock.html#module-unittest.mock">The Python documentation on mocking</a> is also very good. However, it is only available on 3.3 and up. You will need to <code>pip install mock</code> for earlier versions of python.</p>
 <p>Alex Marandon also has a great blog post about <a href="http://alexmarandon.com/articles/python_mock_gotchas/">Python Mock Gotchas</a>. I haven't gotten enough experience with the module where I have run into these, but I feel like it is a time saver!</p>
-<p>This blog post has gotten way bigger than I expected. I really want to thank Amandine Lee, a fellow Hacker Schooler, about showing me the <code>mock</code> module and her general insights to unit testing! Also, my fellow intern, Ingrid Cheung, for helping me with GUI testing! Together, Turtle will have better test coverage!!!</p>
+<p>This blog post has gotten way bigger than I expected. I really want to thank Amandine Lee, a fellow Hacker Schooler, about showing me the <code>mock</code> module, and her general insights regarding unit testing! Also, my fellow intern, Ingrid Cheung, for helping me with GUI testing! Together, Turtle will have better test coverage!!!</p>
 <p>I need to write a blog post about the basics of Turtle. I hope to get to it soon!</p><p>There are <a href="http://lita.github.io/mock.html#disqus_thread">comments</a>.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">

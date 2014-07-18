@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Lita Cho - opw</title>
+        <title>Converting strings to methods</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="http://lita.github.io/theme/css/main.css" type="text/css" />
         <link rel="stylesheet" href="http://lita.github.io/theme/css/syntax.css" type="text/css" />
@@ -52,22 +52,25 @@
                 -->
 
                 <!--Displays Categories on Menu -->
-                 <li ><a href="http://lita.github.io/category/blog.html">Blog</a></li> 
+                 <li class="active"><a href="http://lita.github.io/category/blog.html">Blog</a></li> 
 
                  <!--
-                        <li ><a href="http://lita.github.io/category/blog.html">Blog</a></li>
+                        <li class="active"><a href="http://lita.github.io/category/blog.html">Blog</a></li>
                         <li ><a href="http://lita.github.io/category/personal.html">personal</a></li>
                         <li ><a href="http://lita.github.io/category/programming.html">programming</a></li>
                 </ul> 
                 -->
                 </nav>
         </header><!-- /#banner -->
-        
-        
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="strings-to-funcs.html" rel="bookmark"
+           title="Permalink to Converting strings to methods">Converting strings to methods</a></h1>
+    </header>
 
-            <aside id="body" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://lita.github.io/strings-to-funcs.html">Converting strings to methods</a></h1> 
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-07-10T21:05:00">
                 Thu 10 July 2014
@@ -77,7 +80,7 @@
                 By <a class="url fn" href="http://lita.github.io/author/lita-cho.html">Lita Cho</a>
         </address>
 <p>In <a href="http://lita.github.io/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://lita.github.io/tag/opw.html">opw</a><a href="http://lita.github.io/tag/python.html">python</a></p></footer><!-- /.post-info --><p>During my internship, I am switching gears and fixing bugs in the <a href="https://docs.python.org/3.4/library/imaplib.html">imaplib</a> standard library. I seemed daunting at first, reading the <a href="http://tools.ietf.org/html/rfc3501">RFC</a> documentation. However, I feel like I am getting the hang of it.</p>
+<p>tags: <a href="http://lita.github.io/tag/opw.html">opw</a><a href="http://lita.github.io/tag/python.html">python</a></p></footer><!-- /.post-info -->      <p>During my internship, I am switching gears and fixing bugs in the <a href="https://docs.python.org/3.4/library/imaplib.html">imaplib</a> standard library. I seemed daunting at first, reading the <a href="http://tools.ietf.org/html/rfc3501">RFC</a> documentation. However, I feel like I am getting the hang of it.</p>
 <p>Anyway, today I thought I go through my journey on how I figured out how to call methods with a string command, since I've been reading a lot of code that does that, particularly in the imaplib unit tests.</p>
 <p>Let me explain the problem statement.</p>
 <p>Let's say you have a networking protocol and depending on the message, you want to call different methods. Here, I am using a subset of commands from the IMAP protocol.</p>
@@ -210,65 +213,23 @@
 
 <p>The class object is already managing what methods exists and what doesn't. Why don't we use that to our advantage? This way, when someone subclasses the <code>BaseServer</code>, they don't need to worry about registering the new commands.</p>
 <p>The downside to this is that the method names must match up with the string names. So if you wanted the login method to be called authenticate, you have to go back to using your own dictionary.</p>
-<p>Hopefully, these ideas are useful. I am still learning as I read through the source code of Python's standard libraries. If you know of other ways to do this, please comment!</p><p>There are <a href="http://lita.github.io/strings-to-funcs.html#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-        
+<p>Hopefully, these ideas are useful. I am still learning as I read through the source code of Python's standard libraries. If you know of other ways to do this, please comment!</p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "strings-to-funcs.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://litacho.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
 
- 
-            <li><article class="hentry">    
-                <header>
-                        <h1><a href="http://lita.github.io/mock.html" rel="bookmark" title="Permalink to 2 weeks into internship. Mock Module and more!">2 weeks into internship. Mock Module and more!</a></h1>
-                </header>
-                
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-06-17T16:18:00">
-                Tue 17 June 2014
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://lita.github.io/author/lita-cho.html">Lita Cho</a>
-        </address>
-<p>In <a href="http://lita.github.io/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://lita.github.io/tag/opw.html">opw</a><a href="http://lita.github.io/tag/python.html">python</a><a href="http://lita.github.io/tag/tkinter.html">tkinter</a></p></footer><!-- /.post-info -->                    <div class="summery">
-                        <p>Listing of the things I know and don't know!</p>
-                        <a class="readmore" href="http://lita.github.io/mock.html">read more</a>
-<p>There are <a href="http://lita.github.io/mock.html#disqus_thread">comments</a>.</p>                    </div>
-                </div><!-- /.entry-content -->
-            </article></li>
-        
-
- 
-            <li><article class="hentry">    
-                <header>
-                        <h1><a href="http://lita.github.io/opw-intro.html" rel="bookmark" title="Permalink to OPW and Tkinter!">OPW and Tkinter!</a></h1>
-                </header>
-                
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-05-29T16:18:00">
-                Thu 29 May 2014
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://lita.github.io/author/lita-cho.html">Lita Cho</a>
-        </address>
-<p>In <a href="http://lita.github.io/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://lita.github.io/tag/opw.html">opw</a><a href="http://lita.github.io/tag/python.html">python</a><a href="http://lita.github.io/tag/tkinter.html">tkinter</a></p></footer><!-- /.post-info -->                    <div class="summery">
-                        <p>Describing my first day at OPW working on CPython and Turtle</p>
-                        <a class="readmore" href="http://lita.github.io/opw-intro.html">read more</a>
-<p>There are <a href="http://lita.github.io/opw-intro.html#disqus_thread">comments</a>.</p>                    </div>
-                </div><!-- /.entry-content -->
-            </article></li>
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
         </section><!-- /#extras -->
 
