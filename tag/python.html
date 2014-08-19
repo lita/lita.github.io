@@ -67,7 +67,86 @@
 
             <aside id="body" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://lita.github.io/strings-to-funcs.html">Converting strings to methods</a></h1> 
+                    <h1 class="entry-title"><a href="http://lita.github.io/opw_the_end.html">The End of my Internship!</a></h1> 
+<footer class="post-info">
+        <abbr class="published" title="2014-08-14T23:14:00">
+                Thu 14 August 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://lita.github.io/author/lita-cho.html">Lita Cho</a>
+        </address>
+<p>In <a href="http://lita.github.io/category/blog.html">Blog</a>. </p>
+<p>tags: <a href="http://lita.github.io/tag/opw.html">opw</a><a href="http://lita.github.io/tag/internship.html">internship</a><a href="http://lita.github.io/tag/python.html">python</a></p></footer><!-- /.post-info --><p>I can't believe it. My internship is over in a five days. I feel like I learned a lot and have so much things to do in order to wrap up. There is so much left to do!</p>
+<p>Here I am going to write about my experience during OPW and share what I learned. I also want to give advice to people who are considering doing this program.</p>
+<h1>What I learned</h1>
+<h3>I can pick up a Python ticket and start working on it</h3>
+<p>I am fully comfortable picking up a ticket from bugs.python.org, submitting a patch, receiving feedback, and having it committed. I've submitted two big patches now. One is writing a shit ton of unit tests for the <a href="https://docs.python.org/3.5/library/turtle.html">turtle</a> module, since none existed. The other was adding two big features in <a href="https://docs.python.org/3/library/turtle.html#demo-scripts">turtledemo</a>, a GUI which shows you some cool examples of what you can do with turtle. I made it so that you can adjust the separator between the canvas window and the text window. I also added a feature where you can adjust the font size of the text within the demo.</p>
+<h3>I'm not afraid of navigating through big code bases and reading code.</h3>
+<p>I am surprised how much of a better programmer I've become just by reading the source code of Python's standard libraries. I learned about <a href="http://en.wikipedia.org/wiki/Mixin">Mixins</a>, a whole slew of modules I never knew existed before (<a href="https://docs.python.org/3/library/unittest.mock.html">mock</a>, <a href="https://docs.python.org/3/library/importlib.html">importlib</a>, <a href="https://docs.python.org/3/library/smtplib.html">smtplib</a>, <a href="https://docs.python.org/3.5/library/turtle.html">turtle</a>, <a href="https://docs.python.org/3/library/tkinter.html">tkinter</a> just to name a few), and how to dynamically generate code using <a href="https://docs.python.org/3/library/functions.html#exec">exec</a>.</p>
+<h3>Developing for other operating systems.</h3>
+<p>I learned to be aware of testing for different operating systems, like Windows or different flavors of Linux. Most of this came from adding new GUI features to the <a href="https://docs.python.org/3/library/idlelib.html">IDLE</a>. Mac OS X also has a lot of special case hacks for focusing on certain GUI windows when a program launches due to the nature of Cocoa.</p>
+<h3>Open source code isn't perfect!!!</h3>
+<p>I thought you had to be this experience, hardcore, programmer to contribute to Python. I also thought that Python would be very elegant, and I wouldn't get anything committed.</p>
+<p>I was so wrong.</p>
+<p>I saw a lot of beautiful code, but I also saw some nasty code. Python also has tons of legacy code that needs to be cleaned up. Thus, I feel like anyone can contribute as long as they are willing to put in the time. Your code doesn't need to be perfect either. It is definitely an iterative processes. However, if you contribute, you will learn a lot from code reviews. The core contributors tries keep the bar high and to do what's right. But hacky code gets through sometimes due to practical reasons.</p>
+<h3>Working remotely is not for me</h3>
+<p>I really missed having an office and talking with coworkers. Working at home is hard for me, as it is quite lonely. I also feel like I would get distracted a lot easier. I would also not be good about setting "work hours", as sometimes I would be working till 3am. Sometimes, it was good as I was on a roll with a feature/bug and got it done. Sometimes, I was working on the weekends because I ended up beige watching Orange is the New Black,  and I needed to make up the hours. However, being able to work while waiting in line for Comic-Con panels was pretty awesome. Thanks to the free wifi provided by Teen Wolf, I was surprisingly productive.</p>
+<p>I have some tips about working remotely further down the blog post.</p>
+<h1>What could have been better</h1>
+<h3>Communication</h3>
+<p>I feel like I could have been better communicating. I was expected to write daily emails of what I was doing, and that was hard to get in the routine. There were some weeks where I was super good about it, but some weeks I didn't write it at all. I should have built good habits early on.</p>
+<h3>Maybe have more than one mentor</h3>
+<p>My mentor is a super busy person. She is preparing so many talks for different PyCons, working a full-time job, and volunteering as the director of the Software Python Foundation. Thus, there would be times where it would take awhile before she responded to me. I feel like I would be bothering her if I tried to talk to her outside our weekly meetings. This was probably all in my head.</p>
+<p>It would have been super awesome if there were a group of people I was introduced to in the beginning where I can go to for questions. I totally found that once I started working on tickets. I quickly found out that the python-dev IRC channel is usually dead and mailing lists were the way to go. Python has a specific mailing list for beginners trying to contribute, called core-mentorship@python.org, that is super active. I found a lot of my answers there. But I can see some interns struggling to find out where they can ask questions, as every open source community is different.</p>
+<h2>Advice for future OPW Interns</h2>
+<h3>Be picky when choosing your project</h3>
+<p>To make the most of your internship, you should be excited about the project. You are also trying to gain skills you currently don't have. There is SO MUCH to learn out there. Thus, even before applying, I would make a list of what skills I want to gain and what projects would fit that.</p>
+<h3>When applying, talk to your potential mentor</h3>
+<p>Your mentor is going to be one of the biggest factors that affects your experience during the internship. Thus, you should make sure you get along! If I were to do it all over again, I would list out the top three projects I want to apply for, and contact the mentors. Ask them questions about what they look for when picking interns. I would also ask what their working styles are like and see if it matches yours. Do you need someone who is charismatic and contacts you every other day, or are you the proactive type? Maybe you are an experience developer and can get things done on your own. Then maybe a really chill mentor who meets with you once a week will be better suited for you.</p>
+<h3>When submitting your first patch, see if the community is right for you!</h3>
+<p>As mentioned before, the Python IRC channel is not super active compared to other open source communities like Rust. Also, getting your patched reviewed takes awhile as there are a lot of patches to go through and not enough contributors. Most patches I submitted have been split out to be really small, incremental changes.</p>
+<p>If you were to go to a younger project, you could work on huge changes! It also might be the wild west, where things are changing all the time. Also, documentation might be really bad or non-existent. So setting up you dev environment might be a challenge. A more mature project might have well written docs and tutorials to help you get started.</p>
+<h3>During OPW, don't stay quiet when you get stuck!!</h3>
+<p>I know I was told this right before my internship, but I still think I could have been better about it. If you get stuck, allow yourself 20 minutes before seeking help. Sometimes, your mentor might take longer to respond, you can work on something else while you are waiting feedback.</p>
+<p>Also the biggest thing I learned was representing a problem in an efficient way. If I am working on big project, I can make a <a href="https://gist.github.com/">gist</a> of the problem area, rather than pointing to the whole huge file.</p>
+<h3>You can find help from other core contributors</h3>
+<p>It was super useful trying to find the key contributor of a particular module and asking for advice. I feel like most of my code reviews have been completed by other contributors rather than my mentor. If your mentor is busy, try to find someone else within the community to guide you. Not question/patch review needs to go through your mentor.</p>
+<h3>Don't apply for jobs during your internship.</h3>
+<p>I started to apply for jobs midway through my internship as I wanted to have something lined up right afterwards. However, I feel like this was a big mistake. Some companies wanted me to do homework, which was a big pain. Going on site to meet with companies is a huge time suck.  Once I started getting offers, companies wanted to decide right away. I feel like overall, job searching was a distraction, and I should have waited. If you have the ability to wait, do it! If you really need to start applying to jobs during your internship, manage your time and try not to get burnt out.</p>
+<h3>Even though you are making small changes, you are learning a lot.</h3>
+<p>I really liked that I started off fixing bugs and doing documentation to learn the source code. During the first month, I thought I making any impact. But when I look back through my tickets, I closed out a lot. I was pairing with a friend, and we were debugging a small turtle bug together. He eventually got stuck, and I ended up taking the driver seat. I was shocked how quickly I was able to find the bug. It was because I spent so much time unit-testing and reading the turtle source code that I was able to find it so quickly.</p>
+<h3>Tips on working remotely</h3>
+<p>I've learned some tips both from my experience and my Remote Support Group, which is Hacker School's Zulip stream, and I thought I share them with future OPW interns.</p>
+<h4>Find a friend who is also working remotely, and work over their house!</h4>
+<p>I didn't realize how many friends I have that are working remotely in San Francisco. I took this advice from the Remote Support Group and worked out of a friends house, and it was super fun!</p>
+<h4>Don't be afraid to ask for wifi information!</h4>
+<p>In San Mateo, I ended up working out of boba shops a lot, as there are tons of them. They didn't advertise they had free wifi. However, I did notice their network on my phone. I decided to ask if I could use their wifi and they were really nice about giving me their wifi information! Your mileage may vary, but it is worth a shot, especially if you don't like crowded places! Remember to always buy something if you are using their wifi!</p>
+<h4>Public Libraries</h4>
+<p>Public libraries are also a great place to work. It is super quiet, and their wifi is truly free! No need to by coffee or anything! Some cities have better libraries than others. If you live in the Bay Area, Mountain View's library is SUPER nice.</p>
+<h4>Ask your mentor, or other mentors from different projects in your area, for coworking places!</h4>
+<p><a href="http://www.harihareswara.net/ces.shtml">Sumana Harihareswara</a>, the mentor for the Wikimedia project, gave me a <a href="http://wiki.coworking.org/w/page/16583935/SanFranciscoCoworking">list of co-working places in San Francisco</a>. She is really awesome, and I would highly recommend reading her blog! </p>
+<h4>Find other OPW interns in your area and work together!</h4>
+<p>I wish I had done this. There were 3 people in OPW that were based out of San Francisco. I would have loved to organize a co-working space somewhere and worked together.</p>
+<h4>If you have to work at your house, talk a walk before starting your "work day"</h4>
+<p><a href="http://www.majazf.ca/blog/">Maja Z. Frydrychowicz</a> came up with this one. She recommended taking a walk for 10 minutes to reset your brain so that when you enter your room, you have the mindset of entering a working space rather than your room. Then when you are done for the day, take another walk so you can reset your brain and your desk becomes your home again. I haven't tried this as I kept going to different coffee shops, but I wanted to share to see if it would work for other people.</p>
+<h4>Ask to work out of company's workspace.</h4>
+<p>I was lucky, and I got to work out of Dropbox once a week. I also have a lot of friends who work at tech companies, and they were able to let me work at an empty desk in their office once in awhile. So definitely ask around! Worse case, they will say no.</p>
+<p>I definitely don't want to stop contributing to Python after this internship. OPW definitely gave me the foundation I need to contribute to Open Source.</p><p>There are <a href="http://lita.github.io/opw_the_end.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+        
+
+ 
+            <li><article class="hentry">    
+                <header>
+                        <h1><a href="http://lita.github.io/strings-to-funcs.html" rel="bookmark" title="Permalink to Converting strings to methods">Converting strings to methods</a></h1>
+                </header>
+                
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-07-10T21:05:00">
                 Thu 10 July 2014
@@ -77,145 +156,12 @@
                 By <a class="url fn" href="http://lita.github.io/author/lita-cho.html">Lita Cho</a>
         </address>
 <p>In <a href="http://lita.github.io/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://lita.github.io/tag/opw.html">opw</a><a href="http://lita.github.io/tag/python.html">python</a></p></footer><!-- /.post-info --><p>During my internship, I am switching gears and fixing bugs in the <a href="https://docs.python.org/3.4/library/imaplib.html">imaplib</a> standard library. I seemed daunting at first, reading the <a href="http://tools.ietf.org/html/rfc3501">RFC</a> documentation. However, I feel like I am getting the hang of it.</p>
-<p>Anyway, today I thought I go through my journey on how I figured out how to call methods with a string command, since I've been reading a lot of code that does that, particularly in the imaplib unit tests.</p>
-<p>Let me explain the problem statement.</p>
-<p>Let's say you have a networking protocol and depending on the message, you want to call different methods. Here, I am using a subset of commands from the IMAP protocol.</p>
-<p>Let's say you are a server, getting strings with different commands. Here are some examples.</p>
-<div class="codehilite"><pre><span class="n">b</span><span class="s">&quot;CATZ2 LOGIN &#39;lita@fake_email.com&#39; &#39;this_is_my_password&#39;&quot;</span>
-<span class="n">b</span><span class="s">&quot;CATZ2 SELECT INBOX&quot;</span>
-<span class="n">b</span><span class="s">&quot;CATZ2 SEARCH ALL&quot;</span>
-
-<span class="c"># Note the &#39;b&#39; prefix means this is a byte literal, not string literal.</span>
-<span class="c"># There is no difference in 2.7 but matters in Python 3.3.</span>
-</pre></div>
-
-
-<p>The above represents commands that the client could send you through the IMAP protocol. Let's quickly break down what these commands means.</p>
-<p><code>CATZ2</code> is an identifier called a "tag". This tag is generated by the client and helps the server keep track of all their clients. This tag must be the same throughout the client and server interaction. I like to think of a tag to a IMAP server as a cookie to a browser (although it is not completely the same, as the cookie is generated by the server).</p>
-<p><code>LOGIN</code>, <code>SELECT</code> and <code>SEARCH</code> are the actual command names. Anything following that are arguments to the commands or nested commands.</p>
-<p>The three commands basically logins into your email, selects the Inbox mailbox, and searches for all the mail inside of Inbox, returning the ids of all the messages. It doesn't actually give you your messages quite yet. You need to call the <code>FETCH</code> command for that.</p>
-<p>I had to make a mock server to write unit tests for the imaplib. I had to write a simple parser to parse the client's commands. Here, we will go through the different methods of doing this. Unfortunately, I won't go over how to implement the IMAP commands. I've also simplified my code in order to highlight using strings to call functions.</p>
-<p>The naive way is to write an if-statement, like so.</p>
-<div class="codehilite"><pre><span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;LOGIN&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;SELECT&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">parse_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
-    <span class="n">splitline</span> <span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;ASCII&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c"># We need to decode the string</span>
-    <span class="n">tag</span> <span class="o">=</span> <span class="n">splitline</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">cmd</span> <span class="o">=</span> <span class="n">splitline</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="n">splitline</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-    <span class="k">if</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s">&#39;LOGIN&#39;</span><span class="p">:</span>
-        <span class="n">login</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s">&#39;SELECT&#39;</span><span class="p">:</span>
-        <span class="n">select</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-    <span class="o">...</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Command doesn&#39;t exist&quot;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>This is not very elegant. We definitely can do better.</p>
-<p>Another way is to create a dictionary, where the keys are the string names and the values are the methods themselves. I've seen this used in the <a href="https://docs.python.org/3.0/library/turtle.html">Turtle</a> module and various other places.</p>
-<div class="codehilite"><pre><span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;LOGIN&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;SELECT&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;SEARCH&quot;</span><span class="p">)</span>
-
-<span class="n">str_to_func</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;LOGIN&#39;</span><span class="p">:</span> <span class="n">login</span><span class="p">,</span>
-               <span class="s">&#39;SELECT&#39;</span><span class="p">:</span> <span class="n">select</span><span class="p">,</span>
-               <span class="s">&#39;SEARCH&#39;</span><span class="p">:</span> <span class="n">search</span><span class="p">}</span>
-
-<span class="k">def</span> <span class="nf">parse_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
-    <span class="n">splitline</span> <span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;ASCII&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c"># We need to decode cmd as</span>
-                                            <span class="c"># they are byte literals</span>
-    <span class="n">tag</span> <span class="o">=</span> <span class="n">splitline</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">cmd</span> <span class="o">=</span> <span class="n">splitline</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="n">splitline</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-    <span class="k">if</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">str_to_func</span><span class="p">:</span>
-        <span class="n">str_to_func</span><span class="p">[</span><span class="n">cmd</span><span class="p">](</span><span class="n">args</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Command doesn&#39;t exist&quot;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>This is a lot better! The parse command is a lot shorter due to the fact that there isn't a long chain of if statements.</p>
-<p>But our mock server will probably be a class. And what if we want to add new commands in the future? What if other developers wanted to subclass our class and add their own custom commands? What if we need to add special features for different tests? Each time, they would have to know to override or add to the <code>str_to_func</code> hash table and register their new methods.</p>
-<div class="codehilite"><pre><span class="k">class</span> <span class="nc">BaseServer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">str_to_func</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;LOGIN&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">,</span>
-                            <span class="s">&#39;SELECT&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">select</span><span class="p">}</span>
-
-    <span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&quot;LOGIN&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&quot;SELECT&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">parse_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">):</span>
-        <span class="n">splitline</span> <span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;ASCII&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-        <span class="n">tag</span> <span class="o">=</span> <span class="n">splitline</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">cmd</span> <span class="o">=</span> <span class="n">splitline</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">args</span> <span class="o">=</span> <span class="n">splitline</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-        <span class="k">if</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">str_to_func</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">str_to_func</span><span class="p">[</span><span class="n">cmd</span><span class="p">](</span><span class="n">args</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Command doesn&#39;t exist&quot;</span><span class="p">)</span>
-
-<span class="k">class</span> <span class="nc">CustomServer</span><span class="p">(</span><span class="n">BaseServer</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span> <span class="c"># You can do this in Python 3! Otherwise you</span>
-                           <span class="c"># the syntax is super(CustomServer, self)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">str_to_func</span><span class="p">[</span><span class="s">&quot;CATZ&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">catz</span>
-
-    <span class="k">def</span> <span class="nf">catz</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&quot;LOLCATZ&quot;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>Sure, you can write a registration method. However, it would be great if we didn't have to keep track all the methods at all.</p>
-<p>Well, it turns out we don't have to! When you create a class, Python creates a dictionary of attributes for it's interpreter. We can use this to our advantage to convert the string commands to a method call. We can use the <code>hasattr</code> and the <code>getattr</code> methods to keep track of commands for us!</p>
-<div class="codehilite"><pre><span class="k">class</span> <span class="nc">BaseServer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&quot;LOGIN&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&quot;SELECT&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">parse_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">):</span>
-        <span class="n">splitline</span> <span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;ASCII&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-        <span class="n">tag</span> <span class="o">=</span> <span class="n">splitline</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">cmd</span> <span class="o">=</span> <span class="n">splitline</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">args</span> <span class="o">=</span> <span class="n">splitline</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">lower</span><span class="p">()):</span>
-            <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="o">.</span><span class="n">lower</span><span class="p">())(</span><span class="n">args</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Command doesn&#39;t exist&quot;</span><span class="p">)</span>
-
-<span class="k">class</span> <span class="nc">CustomServer</span><span class="p">(</span><span class="n">BaseServer</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="nf">catz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&quot;LOLCATZ&quot;</span><span class="p">)</span>
-</pre></div>
-
-
-<p>The class object is already managing what methods exists and what doesn't. Why don't we use that to our advantage? This way, when someone subclasses the <code>BaseServer</code>, they don't need to worry about registering the new commands.</p>
-<p>The downside to this is that the method names must match up with the string names. So if you wanted the login method to be called authenticate, you have to go back to using your own dictionary.</p>
-<p>Hopefully, these ideas are useful. I am still learning as I read through the source code of Python's standard libraries. If you know of other ways to do this, please comment!</p><p>There are <a href="http://lita.github.io/strings-to-funcs.html#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>tags: <a href="http://lita.github.io/tag/opw.html">opw</a><a href="http://lita.github.io/tag/python.html">python</a></p></footer><!-- /.post-info -->                    <div class="summery">
+                        <p>Different ways to call functions and methods with their strings names.</p>
+                        <a class="readmore" href="http://lita.github.io/strings-to-funcs.html">read more</a>
+<p>There are <a href="http://lita.github.io/strings-to-funcs.html#disqus_thread">comments</a>.</p>                    </div>
+                </div><!-- /.entry-content -->
+            </article></li>
         
 
  
