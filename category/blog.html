@@ -70,72 +70,65 @@
 
             <aside id="body" class="body">
                 <article class="article">
-                    <h1 class="entry-title"><a href="http://lita.github.io/opw_the_end.html">The End of my Internship!</a></h1> 
+                    <h1 class="entry-title"><a href="http://lita.github.io/interviews.html">Interviews</a></h1> 
 <footer class="post-info">
-        <abbr class="published" title="2014-08-18T09:00:00">
-                Mon 18 August 2014
+        <abbr class="published" title="2014-09-10T23:25:18">
+                Wed 10 September 2014
         </abbr>
 
         <address class="vcard author">
                 By <a class="url fn" href="http://lita.github.io/author/lita-cho.html">Lita Cho</a>
         </address>
 <p>In <a href="http://lita.github.io/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://lita.github.io/tag/opw.html">opw</a><a href="http://lita.github.io/tag/internship.html">internship</a><a href="http://lita.github.io/tag/python.html">python</a></p></footer><!-- /.post-info --><p>I can't believe it. My internship is over! I feel like I learned a lot and have so much things to do in order to wrap up. There is so much left to do!</p>
-<p>Here I am going to write about my experience during OPW and share what I learned. I also want to give advice to people who are considering doing this program.</p>
-<h1>What I learned</h1>
-<h3>I can pick up a Python ticket and start working on it</h3>
-<p>I am fully comfortable picking up a ticket from bugs.python.org, submitting a patch, receiving feedback, and having it committed. I've submitted two big patches now. One is writing a shit ton of unit tests for the <a href="https://docs.python.org/3.5/library/turtle.html">turtle</a> module, since none existed. The other was adding two big features in <a href="https://docs.python.org/3/library/turtle.html#demo-scripts">turtledemo</a>, a GUI which shows you some cool examples of what you can do with turtle. I made it so that you can adjust the separator between the canvas window and the text window. I also added a feature where you can adjust the font size of the text within the demo.</p>
-<h3>I'm not afraid of navigating through big code bases and reading code.</h3>
-<p>I am surprised how much of a better programmer I've become just by reading the source code of Python's standard libraries. I learned about <a href="http://en.wikipedia.org/wiki/Mixin">Mixins</a>, a whole slew of modules I never knew existed before (<a href="https://docs.python.org/3/library/unittest.mock.html">mock</a>, <a href="https://docs.python.org/3/library/importlib.html">importlib</a>, <a href="https://docs.python.org/3/library/smtplib.html">smtplib</a>, <a href="https://docs.python.org/3.5/library/turtle.html">turtle</a>, <a href="https://docs.python.org/3/library/tkinter.html">tkinter</a> just to name a few), and how to dynamically generate code using <a href="https://docs.python.org/3/library/functions.html#exec">exec</a>.</p>
-<h3>Developing for other operating systems.</h3>
-<p>I learned to be aware of testing for different operating systems, like Windows or different flavors of Linux. Most of this came from adding new GUI features to the <a href="https://docs.python.org/3/library/idlelib.html">IDLE</a>. Mac OS X also has a lot of special case hacks for focusing on certain GUI windows when a program launches due to the nature of Cocoa.</p>
-<h3>Open source code isn't perfect!!!</h3>
-<p>I thought you had to be this experience, hardcore, programmer to contribute to Python. I also thought that Python would be very elegant, and I wouldn't get anything committed.</p>
-<p>I was so wrong.</p>
-<p>I saw a lot of beautiful code, but I also saw some nasty code. Python also has tons of legacy code that needs to be cleaned up. Thus, I feel like anyone can contribute as long as they are willing to put in the time. Your code doesn't need to be perfect either. It is definitely an iterative processes. However, if you contribute, you will learn a lot from code reviews. The core contributors try to keep the bar high and to do what's right. But hacky code gets through sometimes due to practical reasons.</p>
-<h3>Working remotely is not for me</h3>
-<p>I really missed having an office and talking with coworkers. Working at home is hard for me, as it is quite lonely. I also feel like I would get distracted a lot easier. I would also not be good about setting "work hours", as sometimes I would be working till 3am. Sometimes, it was good as I was on a roll with a feature/bug and got it done. Sometimes, I was working on the weekends because I ended up binge watching Orange is the New Black,  and I needed to make up the hours. However, being able to work while waiting in line for Comic-Con panels was pretty awesome. Thanks to the free wifi provided by Teen Wolf, I was surprisingly productive.</p>
-<p>I have some tips about working remotely further down the blog post.</p>
-<h1>What could have been better</h1>
-<h3>Communication</h3>
-<p>I feel like I could have been better communicating. I was expected to write daily emails of what I was doing, and that was hard to get in the routine. There were some weeks where I was super good about it, but some weeks I didn't write it at all. I should have built good habits early on.</p>
-<h3>Maybe have more than one mentor</h3>
-<p>My mentor is a super busy person. She is preparing so many talks for different PyCons, working a full-time job, and volunteering as the director of the Python Software Foundation. Thus, there would be times where it would take awhile before she responded to me. I feel like I would be bothering her if I tried to talk to her outside our weekly meetings. This was probably all in my head.</p>
-<p>It would have been super awesome if there were a group of people I was introduced to in the beginning where I can go to for questions. I totally found that once I started working on tickets. I quickly found out that the python-dev IRC channel is usually dead and mailing lists were the way to go. Python has a specific mailing list for beginners trying to contribute, called core-mentorship@python.org, that is super active. I found a lot of my answers there. But I can see some interns struggling to find out where they can ask questions, as every open source community is different.</p>
-<h2>Advice for future OPW Interns</h2>
-<h3>Be picky when choosing your project</h3>
-<p>To make the most of your internship, you should be excited about the project. You are also trying to gain skills you currently don't have. There is SO MUCH to learn out there. Thus, even before applying, I would make a list of what skills I want to gain and what projects would fit that.</p>
-<h3>When applying, talk to your potential mentor</h3>
-<p>Your mentor is going to be one of the biggest factors that affects your experience during the internship. Thus, you should make sure you get along! If I were to do it all over again, I would list out the top three projects I want to apply for, and contact the mentors. Ask them questions about what they look for when picking interns. I would also ask what their working styles are like and see if it matches yours. Do you need someone who is charismatic and contacts you every other day, or are you the proactive type? Maybe you are an experienced developer and can get things done on your own. Then maybe a really chill mentor who meets with you once a week will be better suited for you.</p>
-<h3>When submitting your first patch, see if the community is right for you!</h3>
-<p>As mentioned before, the Python IRC channel is not super active compared to other open source communities like Rust. Also, code/patch reviews takes awhile as there are a lot of patches to go through and not enough contributors. Most patches I submitted have been split out to be really small, incremental changes.</p>
-<p>If you were to go to a younger project, you could work on huge changes! It also might be the wild west, where things are changing all the time. Also, documentation might be really bad or non-existent. So setting up you dev environment might be a challenge. A more mature project might have well written docs and tutorials to help you get started.</p>
-<h3>During OPW, don't stay quiet when you get stuck!!</h3>
-<p>I know I was told this right before my internship, but I still think I could have been better about it. If you get stuck, allow yourself 20 minutes before seeking help. Sometimes, your mentor might take longer to respond, you can work on something else while you are waiting feedback.</p>
-<p>Also the biggest thing I learned was representing a problem in an efficient way. If I am working on big project, I can make a <a href="https://gist.github.com/">gist</a> of the problem area, rather than pointing to the whole huge file.</p>
-<h3>You can find help from other core contributors</h3>
-<p>It was super useful trying to find the key contributor of a particular module and asking for advice. I feel like most of my code reviews have been completed by other contributors rather than my mentor. If your mentor is busy, try to find someone else within the community to guide you. Not every question/patch review needs to go through your mentor.</p>
-<h3>Don't apply for jobs during your internship.</h3>
-<p>I started to apply for jobs midway through my internship as I wanted to have something lined up right afterwards. However, I feel like this was a big mistake. Some companies wanted me to do homework, which was a big pain. Going on site to meet with companies is a huge time suck.  Once I started getting offers, companies wanted to decide right away. I feel like overall, job searching was a distraction, and I should have waited. If you have the ability to wait, do it! If you really need to start applying to jobs during your internship, manage your time and try not to get burnt out.</p>
-<h3>Even though you are making small changes, you are learning a lot.</h3>
-<p>I really liked that I started off fixing bugs and doing documentation to learn the source code. During the first month, I thought I wasn't making any impact. But when I look back through my tickets, I closed out a lot! A month in, I was pairing with a friend, and we were debugging a small turtle bug together. He eventually got stuck, and I ended up taking the driver seat. I was shocked how quickly I was able to find the bug. It was because I spent so much time unit-testing and reading the turtle source code that I was able to find it so quickly.</p>
-<h3>Tips on working remotely</h3>
-<p>I've learned some tips both from my experience and my Remote Support Group, which is a Hacker School's chat room, and I thought I share them with future OPW interns.</p>
-<h4>Find a friend who is also working remotely, and work over their house!</h4>
-<p>I didn't realize how many friends I have that are working remotely in San Francisco. I took this advice from the Remote Support Group and worked out of a friends house, and it was super fun!</p>
-<h4>Don't be afraid to ask for wifi information!</h4>
-<p>In San Mateo, I ended up working out of boba shops a lot, as there are tons of them. They didn't advertise they had free wifi. However, I did notice their network on my phone. I decided to ask if I could use their wifi and they were really nice about giving me their wifi information! Your mileage may vary, but it is worth a shot, especially if you don't like crowded places! Remember to always buy something if you are using their wifi!</p>
-<h4>Public Libraries</h4>
-<p>Public libraries are also a great place to work. It is super quiet, and their wifi is truly free! No need to buy coffee or anything! Some cities have better libraries than others. If you live in the Bay Area, Mountain View's library is SUPER nice.</p>
-<h4>Ask your mentor, or other mentors from different projects in your area, for coworking places!</h4>
-<p><a href="http://www.harihareswara.net/ces.shtml">Sumana Harihareswara</a>, the mentor for the Wikimedia project, gave me a <a href="http://wiki.coworking.org/w/page/16583935/SanFranciscoCoworking">list of co-working places in San Francisco</a>. She is really awesome, and I would highly recommend reading her blog! </p>
-<h4>Find other OPW interns in your area and work together!</h4>
-<p>I wish I had done this. There were 3 people in OPW that were based out of San Francisco. I would have loved to organize a co-working space somewhere and worked together.</p>
-<h4>If you have to work at your house, take a walk before starting your "work day"</h4>
-<p><a href="http://www.majazf.ca/blog/">Maja Z. Frydrychowicz</a> came up with this one. She recommended taking a walk for 10 minutes to reset your brain so that when you enter your room, you have the mindset of entering a working space rather than your room. Then when you are done for the day, take another walk so you can reset your brain and your desk becomes your home again. I haven't tried this as I kept going to different coffee shops, but I wanted to share to see if it would work for other people.</p>
-<h4>Ask to work out of company's workspace.</h4>
-<p>I was lucky, and I got to work out of Dropbox once a week. I also have a lot of friends who work at tech companies, and they were able to let me work at an empty desk in their office once in awhile. So definitely ask around! Worse case, they will say no.</p>
-<p>I definitely don't want to stop contributing to Python after this internship. OPW definitely gave me the foundation I need to contribute to Open Source.</p><p>There are <a href="http://lita.github.io/opw_the_end.html#disqus_thread">comments</a>.</p>                </article>
+</footer><!-- /.post-info --><p>A lot of people at Hacker School get stressed with jobs near the end of their batch. I thought I could avoid the stress, since I was doing GNOME's Outreach Program for Women (OPW) afterwards. But no, I just ended up postponing it.</p>
+<p>I interviewed at any place that would interview with me. I know a lot of people prefer to only interview at places they really want to work at. However, I wasn't sure where I wanted to work. I had a few preferences (Python shop, small company size, interesting projects), but otherwise, I was pretty clueless.</p>
+<p>Even though interviewing took a lot of time and emotional energy, I am really glad I interviewed everywhere. I learned a lot about different companies and the challenges they face. I also learned how different the interview process was at the various companies. Some did the traditional white-boarding, some were all done through the computer. Even the questions were vastly different. The biggest thing I learned was that all these companies have different needs. Thus, just because you don't get a job at one company doesn't make you a bad engineer (even though I felt horribly incompetent when I got my first rejection). There is a good chance that you just didn't fit their needs. Or you just completely bombed it, in which case you'll do better next time! There is no "rockstar engineer" (I really hate that term) that could get all the job offers from any tech company. Companies are looking for someone who can ramp-up quickly and do the job. That job might be very different company A and company B.</p>
+<p>Some companies required a take-home assignment. At first, I hated this, as it took up a lot of time. But in the end, I ended up learning a lot from it! Some assignments ended up being a ton of fun as well.</p>
+<p>I also enjoyed reading the blog, <a href="http://qz.com/258066/this-is-why-you-dont-hire-good-developers/">This is why you don't hire good developers</a>. In the end, it is hard for both sides. It definitely feels like dating. When you have a great fit, it is quite magical.</p>
+<p>I learned a lot about myself and what I wanted in a job while interviewing at these companies. The biggest thing I discovered is that I wanted to work on a product that I actually use, which was a surprise. I also wanted to work at a smaller company, where I would have a great impact, but big enough where I would have people to learn from.</p>
+<p>I also realized as I interviewed more, I was getting better at interviewing. I stopped getting nervous when I did a phone screen or an onsite. I was getting better at explaining my projects. I was able to concisely explain my Hacker School project in 3-5 minutes, as well as dive really deep into the project, turning it into a 30-45 minute conversation. I think this is the most important skill I gained. One company asked me to do a presentation of my Hacker School project, which was a blessing in disguised. I basically created a talk about my project and practiced in front of Hacker School facilitators, who fact checked my explanations. That definitely helped in future interviews.</p>
+<p>I also rejected a lot of offers early on, which I am glad I did. I ended up being really picky about where I wanted to work.</p>
+<p>I really wish I could give some solid interviewing tips. But honestly, I feel like going to hackathons and coding projects I really cared about ended up helping the most. I also ended up listening to a shit ton of interesting PyCon and OpenBridge talks, which also helped! I did try studying with Cracking the Coding Interview, but honestly, it didn't really work for me. I would definitely study up on algorithms and data structures if you do plan on applying to bigger places like Google.</p>
+<p>I had five great offers to choose from. I definitely negotiated thanks to <a href="http://valerieaurora.org/howto_salary/">Valerie Aurora's blog post</a>!</p>
+<p>In the end, I decided to go with.....</p>
+<p>.
+<br>
+.
+<br>
+.
+<br>
+.
+<br>
+.
+<br>
+.
+<br>
+.
+<br>
+.
+<br>
+.
+<br>
+.
+<br>
+.
+<br>
+.
+<br>
+.
+<br>
+.
+<br>
+.
+<br>
+.
+<br>
+.
+<br>
+.
+<br></p>
+<p><img src='/images/Lyft_logo.png' style="width: 50%; height: 50%" /></p>
+<p>Yup! I ended up working at Lyft and couldn't be happier.</p><p>There are <a href="http://lita.github.io/interviews.html#disqus_thread">comments</a>.</p>                </article>
                 <aside id="extras" class="sidebar"> 
                         <h2 class='sidebar_header'>Blogs I love!</h2>
                         <hr class='line1'/>
@@ -156,6 +149,32 @@
                     <h1 class='other_article'>Other articles</h1>
                     <hr class="line1"/>
                     <ol id="posts-list" class="hfeed">
+        
+
+ 
+            <li><article class="hentry">    
+                <header>
+                        <h1><a href="http://lita.github.io/opw_the_end.html" rel="bookmark" title="Permalink to The End of my Internship!">The End of my Internship!</a></h1>
+                </header>
+                
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-08-18T09:00:00">
+                Mon 18 August 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://lita.github.io/author/lita-cho.html">Lita Cho</a>
+        </address>
+<p>In <a href="http://lita.github.io/category/blog.html">Blog</a>. </p>
+<p>tags: <a href="http://lita.github.io/tag/opw.html">opw</a><a href="http://lita.github.io/tag/internship.html">internship</a><a href="http://lita.github.io/tag/python.html">python</a></p></footer><!-- /.post-info -->
+                <div class="summary">
+                <p>Reflections on my internship. I go into what I learned and give advice for future OPW interns.</p>
+                <a class="readmore" href="http://lita.github.io/opw_the_end.html">read more</a>
+<p>There are <a href="http://lita.github.io/opw_the_end.html#disqus_thread">comments</a>.</p>                </div>
+                
+                </div><!-- /.entry-content -->
+            </article></li>
         
 
  
@@ -373,37 +392,9 @@ written ghetto Scheme code back in college (if you went ...</p>
                 
                 </div><!-- /.entry-content -->
             </article></li>
-        
-
- 
-            <li><article class="hentry">    
-                <header>
-                        <h1><a href="http://lita.github.io/2-weeks-into-hacker-school-progress-on-my-bittorrent-client.html" rel="bookmark" title="Permalink to 2 Weeks into Hacker School! Progress on my Bittorrent Client">2 Weeks into Hacker School! Progress on my Bittorrent Client</a></h1>
-                </header>
-                
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-02-24T02:56:00">
-                Mon 24 February 2014
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://lita.github.io/author/lita-cho.html">Lita Cho</a>
-        </address>
-<p>In <a href="http://lita.github.io/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://lita.github.io/tag/bittorrent.html">bittorrent</a><a href="http://lita.github.io/tag/hacker-school.html">hacker school</a></p></footer><!-- /.post-info -->
-                <div class="summary">
-                <p>Wow! I can't believe two weeks has gone by! I feel like I am learning a
-lot, but not learning enough. At the end of the day, I always want to
-code more. It is so hard to focus on your projects while at Hacker
-School though. There is ...</p>
-                <a class="readmore" href="http://lita.github.io/2-weeks-into-hacker-school-progress-on-my-bittorrent-client.html">read more</a>
-<p>There are <a href="http://lita.github.io/2-weeks-into-hacker-school-progress-on-my-bittorrent-client.html#disqus_thread">comments</a>.</p>                </div>
-                
-                </div><!-- /.entry-content -->
-            </article></li>
 <p class="paginator">
-    Page 1 / 1
+    Page 1 / 2
+        <a href="http://lita.github.io/category/blog2.html">&raquo;</a>
 </p>
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->
